@@ -1,0 +1,11 @@
+.searchFeedContainer {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 1350px;
+}
+.searchFeedContainer h2 {
+  width: 100%;
+}

@@ -1,0 +1,186 @@
+.card {
+  border-radius: 8px;
+  overflow: hidden;
+  color: #fff;
+  position: relative;
+  margin-top: 10px;
+  max-width: 100%;
+}
+
+.card-top > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 20px;
+  background: linear-gradient(
+    0deg,
+    rgba(50, 50, 50, 0.8) 50%,
+    rgba(228, 228, 228, 0) 100%
+  );
+  /* max-height: 98%;
+  overflow-y: auto; */
+}
+
+.cardBottomLeft {
+  width: 60%;
+}
+.cardBottomRight {
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+}
+.cardBottomRight button {
+  font-family: inherit;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: rgba(235, 28, 36, 0.5);
+  color: #fff;
+  padding: 15px 35px;
+  transform: scale(1);
+  transition: all 0.1s ease;
+}
+.cardBottomRight button:hover {
+  background-color: rgba(235, 28, 36, 0.7);
+  transform: scale(1.05);
+}
+.cardBottomRight button:active {
+  background-color: rgba(235, 28, 36, 0.7);
+  transform: scale(0.98);
+}
+.cardBottomLeft > h2 {
+  font-weight: 500;
+  margin: 0;
+}
+.details {
+  display: flex;
+  align-items: center;
+}
+.details svg {
+  font-size: 18px;
+}
+.totalVotes {
+  color: #d6d6d6;
+  font-size: 14px;
+}
+.genre {
+  color: #d6d6d6;
+  margin-left: 10px;
+  font-size: 14px;
+  margin-top: 2px;
+  display: flex;
+  gap: 10px;
+}
+.genre.detailsPage {
+  font-size: 12px;
+}
+.desc {
+  color: #d6d6d6;
+  font-size: 12px;
+  margin-top: 0;
+}
+.category {
+  position: relative;
+}
+.category::before {
+  content: '';
+  background: rgb(255, 61, 61);
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+@media only screen and (max-width: 800px) {
+  .card-bottom {
+    padding-left: 10px;
+  }
+  .cardBottomLeft {
+    width: 65%;
+  }
+  .cardBottomLeft h2 {
+    font-size: 20px;
+  }
+  .cardBottomRight {
+    right: 10px;
+  }
+  .cardBottomRight button {
+    padding: 20px 15px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .cardBottomLeft h2 {
+    font-size: 18px;
+  }
+  .cardBottomRight button {
+    padding: 20px 15px;
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .card-bottom {
+    padding: 5px;
+  }
+  .cardBottomLeft {
+    width: 65%;
+  }
+  .cardBottomLeft h2 {
+    font-size: 16px;
+  }
+  .cardBottomRight {
+    right: 5px;
+    bottom: 15px;
+  }
+  .details svg {
+    font-size: 14px;
+    margin-right: 1px;
+  }
+  .details p {
+    font-size: 14px;
+  }
+  .details .totalVotes {
+    font-size: 12px;
+  }
+  .details .genre {
+    font-size: 12px;
+  }
+  .cardBottomLeft .desc {
+    text-overflow: ellipsis;
+    display: block;
+    width: 90%;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .cardBottomRight button {
+    font-size: 12px;
+    padding: 15px 10px;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .cardBottomLeft h2 {
+    font-size: 14px;
+  }
+  .card-bottom {
+    padding-left: 3px;
+  }
+  .cardBottomRight {
+    right: 3px;
+  }
+  .cardBottomRight button {
+    padding: 15px 8px;
+  }
+  .cardBottomLeft h2 {
+    font-size: 14px;
+  }
+  .details svg {
+    font-size: 14px;
+  }
+}

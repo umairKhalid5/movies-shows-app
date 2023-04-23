@@ -1,0 +1,180 @@
+.posters {
+  width: 65%;
+  margin: auto;
+  margin-bottom: 30px;
+}
+.posters h2 {
+  letter-spacing: 1px;
+}
+.posterContainer {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  justify-content: center;
+  width: 100%;
+  row-gap: 20px;
+}
+.poster {
+  width: 233px;
+  height: auto;
+  margin: 0 15px 10px 15px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  overflow-y: auto;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.35);
+}
+.poster.selected {
+  pointer-events: none;
+}
+.poster.poster.selected::after {
+  content: '';
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.65);
+  inset: 0;
+}
+.poster::-webkit-scrollbar {
+  width: 3px;
+}
+.poster .heading {
+  font-weight: 500;
+  font-size: 25px;
+  letter-spacing: 1px;
+  margin: 20px 0 0 1px;
+}
+.poster h4 {
+  font-weight: 500;
+  padding: 0;
+  margin: 5px 0 0 3px;
+  font-size: 16px;
+}
+.poster p {
+  margin: 0 0 0 3px;
+  padding: 0;
+  font-size: 15px;
+  color: #d6d6d6;
+}
+.poster img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.poster .details {
+  border-radius: 5px;
+  position: absolute;
+  inset: 0;
+  /* bottom: 80px; */
+  height: 350px;
+  background-color: rgba(22, 22, 22, 0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.poster:hover .details {
+  opacity: 1;
+}
+.poster span {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+/* //? Mini Poster for Tv Shows */
+.poster .miniDetails {
+  border-radius: 5px;
+  position: absolute;
+  inset: 0;
+  height: 350px;
+  overflow: hidden auto;
+  background-color: rgba(22, 22, 22, 0.75);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  padding: 5px 8px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.poster:hover .miniDetails {
+  opacity: 1;
+}
+.miniDetails::-webkit-scrollbar {
+  width: 3px;
+}
+.poster a {
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: rgba(235, 28, 36, 0.5);
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 20px;
+  transform: scale(1);
+  transition: all 0.1s ease;
+}
+.poster a:hover {
+  background-color: rgba(235, 28, 36, 0.7);
+}
+.poster a:active {
+  background-color: rgba(235, 28, 36, 0.7);
+  transform: scale(0.98);
+}
+.more {
+  height: 350px;
+  width: 233px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(235, 28, 36, 0.1);
+}
+.more a {
+  font-size: 22px;
+  padding: 10px 35px;
+}
+
+@media only screen and (max-width: 850px) {
+  .posters {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 630px) {
+  .posters {
+    width: 95%;
+  }
+  .posters h2 {
+    font-size: 20px;
+  }
+  .poster {
+    margin: 0 8px 10px 8px;
+  }
+  .poster h4 {
+    font-size: 14px;
+  }
+  .poster p {
+    font-size: 14px;
+  }
+  .poster span {
+    font-size: 20px;
+  }
+  .poster a {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .posters h2 {
+    letter-spacing: 0.5px;
+    font-size: 18px;
+  }
+  .posters {
+    width: 98%;
+  }
+  .poster {
+    margin: 0 0 10px 0;
+  }
+}

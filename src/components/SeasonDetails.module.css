@@ -1,0 +1,194 @@
+.container .details::-webkit-scrollbar {
+  width: 1px;
+}
+.container {
+  width: 1220px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+}
+.container h2 {
+  margin: 20px 0 10px 0;
+}
+.singlePoster {
+  max-height: 195px;
+  display: flex;
+}
+.imageContainer {
+  max-width: 100px;
+  height: 100%;
+}
+.imageContainer img {
+  max-width: 100%;
+  height: 100%;
+}
+.singlePoster .details {
+  margin-left: 15px;
+}
+.singlePoster a p {
+  color: #4f92ff;
+  text-decoration: underline;
+  display: inline-block;
+  font-size: 20px;
+  margin: 0 0 10px 0;
+  transition: all 0.2s ease;
+}
+.singlePoster a:hover p {
+  text-decoration: none;
+  color: rgb(161, 197, 255);
+}
+.singlePoster p {
+  font-size: 27px;
+  margin: 0;
+}
+.singlePoster span {
+  margin-left: 5px;
+  font-size: 13px;
+}
+.episode {
+  margin: 5px 0;
+  background-color: rgba(49, 49, 49, 0.5);
+  padding: 10px 15px;
+  display: flex;
+  border-radius: 10px;
+}
+/* 1.777 */
+.still {
+  max-width: 250px;
+  height: 140px;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+.still img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.still .count {
+  position: absolute;
+  background-color: rgba(37, 37, 37, 0.5);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  font-size: 14px;
+  color: rgb(189, 190, 191);
+}
+.episode .details {
+  margin-left: 10px;
+  max-height: 140px;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+.details h4 {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  border-bottom: 1px solid #eb1c24;
+}
+.details h4 span {
+  font-size: 12px;
+}
+.details .ratings {
+  font-size: 13px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 7px 0 5px 0;
+}
+.details .desc {
+  font-size: 13px;
+}
+@media only screen and (max-width: 900px) {
+  .still {
+    max-width: 200px;
+    height: 112px;
+    position: relative;
+  }
+  .still .count {
+    font-size: 12px;
+  }
+  .episode .details {
+    max-height: 112px;
+  }
+  .details h4 {
+    font-size: 14px;
+  }
+  .details svg {
+    font-size: 14px;
+  }
+  .details .ratings,
+  .details .desc {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .imageContainer {
+    max-width: 80px;
+  }
+  .episode {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+  }
+  .episode .details {
+    max-height: 150px;
+    margin-left: 0;
+    padding-left: 5px;
+  }
+  .details h4 {
+    font-size: 13px;
+  }
+  .details svg {
+    font-size: 13px;
+  }
+  .singlePoster a p {
+    font-size: 18px;
+  }
+  .singlePoster p {
+    font-size: 24px;
+  }
+  .singlePoster .details {
+    margin-left: 10px;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .container h2 {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  .still {
+    max-width: 150px;
+    height: 84px;
+  }
+  .details svg {
+    font-size: 13px;
+  }
+  .details .ratings,
+  .details .desc {
+    font-size: 10px;
+  }
+  .singlePoster a p {
+    font-size: 14px;
+  }
+  .singlePoster span {
+    font-size: 12px;
+  }
+  .singlePoster p {
+    font-size: 16px;
+  }
+  .imageContainer {
+    max-width: 50px;
+  }
+  .singlePoster .details {
+    margin-left: 5px;
+  }
+}

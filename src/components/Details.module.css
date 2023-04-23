@@ -1,0 +1,389 @@
+.card::-webkit-scrollbar,
+.detailsContainer::-webkit-scrollbar {
+  width: 4px;
+}
+.mainContainer {
+  /* background-color: steelblue; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1350px;
+}
+
+.imageContainer {
+  position: relative;
+  margin-top: 20px;
+  height: 590px;
+  max-width: 1350px;
+  overflow: hidden;
+  border-radius: 5px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+.imageContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+.backdrop {
+  position: absolute;
+  top: 0;
+  /* left: 26.6667%; */
+  left: 28.8889%;
+  bottom: 0;
+  width: 30%;
+  z-index: 5;
+  width: 100%;
+  overflow: hidden;
+}
+.backdrop img {
+  object-fit: cover;
+  max-width: 100%;
+  height: 100%;
+  filter: blur(2px);
+}
+.posterContainer {
+  z-index: 30;
+  max-width: 390px;
+  height: 100%;
+  overflow: hidden;
+}
+.posterContainer img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.detailsContainer {
+  flex: 1;
+  z-index: 30;
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px;
+  background: linear-gradient(
+    0deg,
+    rgba(29, 29, 29, 0.5) 50%,
+    rgba(228, 228, 228, 0) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.card {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-height: 400px;
+  overflow-y: auto;
+}
+.tagline {
+  font-size: 60px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  margin: 0;
+}
+.title {
+  margin: 10px 0;
+}
+.bottomHalf {
+  margin-top: 20px;
+  /* background-color: steelblue; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.finances p {
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin: 10px 0;
+}
+.finances p span {
+  color: #ececec;
+  font-size: 14px;
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.detailsContainer button {
+  font-family: inherit;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: rgba(235, 28, 36, 0.5);
+  color: #fff;
+  height: 60px;
+  width: 220px;
+  transform: scale(1);
+  transition: all 0.1s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.detailsContainer button:hover {
+  background-color: rgba(235, 28, 36, 0.7);
+  transform: scale(1.05);
+}
+.detailsContainer button:active {
+  background-color: rgba(235, 28, 36, 0.7);
+  transform: scale(0.98);
+}
+.details {
+  display: flex;
+  align-items: center;
+}
+.details svg {
+  font-size: 18px;
+}
+.totalVotes {
+  color: #d6d6d6;
+  font-size: 14px;
+  margin-right: 20px;
+}
+.genre {
+  color: #ececec;
+  margin-left: 10px;
+  font-size: 14px;
+  margin-top: 2px;
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+}
+.desc {
+  color: #ececec;
+  font-size: 13px;
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+.videoSection {
+  position: fixed;
+  inset: 0px;
+  background: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+}
+.videoContainer {
+  max-width: 70%;
+  margin: 90px auto;
+  aspect-ratio: 16/9;
+}
+.videoSection button {
+  color: #eb1c24;
+  background: transparent;
+  font-size: 25px;
+  font-weight: bold;
+  position: absolute;
+  top: 70px;
+  right: 10px;
+  transition: 0.3s ease;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.videoSection button:hover {
+  color: #fff;
+  background-color: #eb1c24;
+}
+/* .videoContainer h2 {
+  font-weight: 700;
+  font-size: 30px;
+  width: 85%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  letter-spacing: 1px;
+  margin: 10px 0 10px 0;
+  border-bottom: 2px solid #eb1c24;
+} */
+/* //? Media Queries */
+@media only screen and (min-width: 1740px) {
+  .videoContainer {
+    max-width: 65%;
+  }
+}
+@media only screen and (max-width: 1340px) {
+  .videoContainer {
+    max-width: 85%;
+  }
+}
+@media only screen and (max-width: 950px) {
+  .imageContainer {
+    height: auto;
+  }
+  .imageContainer::before {
+    display: none;
+  }
+  .backdrop {
+    display: none;
+  }
+  .posterContainer {
+    max-width: 100%;
+    height: 100%;
+  }
+  .detailsContainer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      0deg,
+      rgba(29, 29, 29, 0.8) 65%,
+      rgba(228, 228, 228, 0) 100%
+    );
+  }
+  .tagline {
+    font-size: 50px;
+    letter-spacing: 1px;
+  }
+  .title {
+    margin: 10px 0;
+  }
+  .finances p {
+    font-size: 14px;
+  }
+  .actions {
+    gap: 15px;
+  }
+  .detailsContainer {
+    padding: 15px;
+  }
+  .detailsContainer button {
+    font-size: 15px;
+    height: 50px;
+    width: 180px;
+  }
+  .detailsContainer button:hover {
+    background-color: rgba(235, 28, 36, 1);
+  }
+  .detailsContainer button:active {
+    background-color: rgba(235, 28, 36, 1);
+  }
+  .details svg {
+    font-size: 16px;
+  }
+  .totalVotes {
+    margin-right: 5px;
+  }
+  .genre {
+    align-items: center;
+    gap: 10px;
+  }
+  .desc {
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .videoSection button {
+    top: 65px;
+    right: -2px;
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .tagline {
+    font-size: 35px;
+  }
+  .detailsContainer {
+    padding: 10px;
+  }
+}
+@media only screen and (max-width: 510px) {
+  .card::-webkit-scrollbar,
+  .detailsContainer::-webkit-scrollbar {
+    width: 2px;
+  }
+  .tagline {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .title {
+    margin: 10px 0 5px 0;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .imageContainer {
+    max-width: 100%;
+  }
+  .detailsContainer {
+    padding: 5px;
+  }
+  .details {
+    margin-top: 15px;
+  }
+  .details p {
+    margin: 0 3px 0 0;
+    font-size: 14px;
+  }
+  .desc {
+    margin: 20px 0;
+  }
+  .details svg {
+    font-size: 12px;
+    margin-right: 1px;
+  }
+  .totalVotes {
+    display: none;
+  }
+  .genre {
+    font-size: 12px;
+    margin-left: 5px;
+    gap: 3px;
+  }
+  .genre strong {
+    font-weight: 400;
+  }
+  .finances p,
+  .finances p span {
+    font-size: 12px;
+    letter-spacing: normal;
+  }
+  .detailsContainer button {
+    font-size: 14px;
+    width: 155px;
+  }
+  .detailsContainer button svg {
+    /* display: none; */
+    font-size: 18px;
+    margin-right: 5px;
+  }
+  .videoSection button {
+    top: 60px;
+    right: -8px;
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .card::-webkit-scrollbar,
+  .detailsContainer::-webkit-scrollbar {
+    width: 1px;
+  }
+  .detailsContainer {
+    padding: 1px;
+  }
+  .details {
+    margin-top: 8px;
+  }
+  .genre {
+    margin-left: 1px;
+  }
+  .detailsContainer button {
+    font-size: 12px;
+    width: 135px;
+    height: 40px;
+  }
+  .finances p {
+    margin: 5px 0;
+  }
+}
