@@ -169,24 +169,44 @@ nav .subMenu .subList {
   right: 0;
   left: 0;
   border-radius: 10px;
-  border: 1px solid #eb1c24;
   padding: 0.5rem 1rem;
+  max-height: 320px;
+  overflow-y: auto;
+  opacity: 0;
+}
+.search .search-drop-down.show {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+.search .search-drop-down::-webkit-scrollbar {
+  width: 3px;
 }
 .search-drop-down li {
   width: 100%;
-  /* background-color: #eb1c24; */
-  /* border: 1px solid green; */
-  margin-bottom: 5px;
+  margin-bottom: 0.5em;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-start;
+  cursor: pointer;
+  border-bottom: 1px solid #8b8b8b;
+  transition: background-color 0.2s ease;
+  padding: 0.5em;
+}
+.search-drop-down li:last-of-type {
+  border: none;
+}
+.search-drop-down li:hover {
+  background-color: hsl(266, 13%, 15%);
 }
 .search-drop-down li img {
   max-width: 40px;
+  margin-right: 0.8em;
   object-fit: cover;
+  border-radius: 5px;
 }
 .search-drop-down li p {
-  font-size: 1em;
+  font-size: 0.8em;
+  text-align: left;
+  margin-block: 0;
 }
 .active {
   border-bottom: 2px solid rgba(235, 28, 36, 1);
@@ -506,7 +526,7 @@ nav .subMenu .subList {
     display: none;
   }
   .navbar-item-button {
-    margin: 15px 5px;
+    margin: 10px 5px;
   }
   .navbar-item-button p {
     font-size: 16px;

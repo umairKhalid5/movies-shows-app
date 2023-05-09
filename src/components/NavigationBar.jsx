@@ -12,6 +12,7 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import UpcomingIcon from '@mui/icons-material/Upcoming';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { CSSTransition } from 'react-transition-group';
+import SuggestionsBox from './SuggestionsBox';
 
 const navItems = [
   { text: 'Movies', icon: <TheatersIcon /> },
@@ -53,7 +54,8 @@ const NavigationBar = () => {
   const [showCategory, setShowCategory] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
-  const [showSuggestions, setShowSuggestions] = useState(true);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [showResults, setShowResults] = useState(false);
 
   const [winSize, setWinSize] = useState(window.innerWidth);
   const [openMenu, setOpenMenu] = useState(false);
@@ -122,6 +124,21 @@ const NavigationBar = () => {
     if (e.target.value.length > 0) setShowSuggestions(true);
     else setShowSuggestions(false);
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (showSuggestions) setShowResults(true);
+      else {
+        setShowResults(false);
+      }
+    }, 1000);
+
+    return () => {
+      // console.log('clean');
+      clearTimeout(timer);
+      setShowResults(false);
+    };
+  }, [showSuggestions, searchTerm]);
 
   const MainNav = (
     <ul
@@ -202,25 +219,13 @@ const NavigationBar = () => {
         <button>
           <SearchIcon />
         </button>
-        {showSuggestions && (
-          <div className="search-drop-down">
-            <ul>
-              <li>
-                <img
-                  src="https://image.tmdb.org/t/p/w1280//ngl2FKBlU4fhbdsrtdom9LVLBXw.jpg"
-                  alt=""
-                />
-                <p>Movie Name</p>
-              </li>
-              <li>
-                <img
-                  src="https://image.tmdb.org/t/p/w1280//t6HIqrRAclMCA60NsSmeqe9RmNV.jpg"
-                  alt=""
-                />
-                <p>Movie Name</p>
-              </li>
-            </ul>
-          </div>
+        {showSuggestions && showResults && (
+          <SuggestionsBox
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            setShowCategory={setShowCategory}
+            setOpenMenu={setOpenMenu}
+          />
         )}
       </form>
     </ul>
