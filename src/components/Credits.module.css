@@ -68,7 +68,6 @@
     max-height: 140px;
   }
   .creditsContainer ul li {
-    /* flex-basis: 95%; */
     font-size: 12px;
   }
   .creditsContainer ul li img {
