@@ -19,6 +19,8 @@
   margin: 0;
   padding: 2px;
   gap: 12px;
+  max-height: 260px;
+  overflow-y: auto;
 }
 .creditsContainer ul li {
   display: flex;
@@ -43,7 +45,7 @@
     flex-basis: 32%;
   }
 }
-@media only screen and (max-width: 630px) {
+@media only screen and (max-width: 700px) {
   .creditsContainer h2 {
     font-size: 25px;
   }
@@ -62,8 +64,20 @@
   .creditsContainer h2 {
     font-size: 20px;
   }
+  .creditsContainer ul {
+    max-height: 140px;
+  }
+  .creditsContainer ul li {
+    /* flex-basis: 95%; */
+    font-size: 12px;
+  }
+  .creditsContainer ul li img {
+    height: 30px;
+    width: 30px;
+  }
+}
+@media only screen and (max-width: 350px) {
   .creditsContainer ul li {
     flex-basis: 95%;
-    font-size: 14px;
   }
 }
