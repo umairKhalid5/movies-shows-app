@@ -1,6 +1,5 @@
 import React from 'react';
 import { useGetSearchVideosQuery } from '../services/getMoviesApi';
-import { CSSTransition } from 'react-transition-group';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 import demoPoster from '../assets/demoPoster.jpg';

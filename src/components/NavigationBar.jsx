@@ -127,9 +127,8 @@ const NavigationBar = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (showSuggestions) {
-        setShowResults(true);
-      } else {
+      if (showSuggestions) setShowResults(true);
+      else {
         setShowResults(false);
       }
     }, 1000);
@@ -137,7 +136,7 @@ const NavigationBar = () => {
     return () => {
       // console.log('clean');
       clearTimeout(timer);
-      // setShowResults(false);
+      setShowResults(false);
     };
   }, [showSuggestions, searchTerm]);
 
@@ -220,25 +219,14 @@ const NavigationBar = () => {
         <button>
           <SearchIcon />
         </button>
-        <CSSTransition
-          in={showSuggestions && showResults}
-          mountOnEnter
-          unmountOnExit
-          timeout={{ enter: 2000, exit: 2000 }}
-          classNames={{
-            enter: '',
-            enterActive: 'dropdown show',
-            exit: '',
-            exitActive: 'dropdown hide',
-          }}
-        >
+        {showSuggestions && showResults && (
           <SuggestionsBox
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
             setShowCategory={setShowCategory}
             setOpenMenu={setOpenMenu}
           />
-        </CSSTransition>
+        )}
       </form>
     </ul>
   );

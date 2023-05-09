@@ -123,11 +123,11 @@ svg {
 }
 .search .dropdown.show {
   pointer-events: auto;
-  animation: slideIn 2000ms ease-out forwards;
+  animation: slideIn 1s ease-out forwards;
 }
 .search .dropdown.hide {
   pointer-events: none;
-  animation: slideOut 2000ms ease-out forwards;
+  animation: slideOut 500ms ease-out forwards;
 }
 nav .subMenu {
   position: relative;
