@@ -1,5 +1,6 @@
 import React from 'react';
 import { useGetSearchVideosQuery } from '../services/getMoviesApi';
+import { CSSTransition } from 'react-transition-group';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 import demoPoster from '../assets/demoPoster.jpg';
@@ -24,7 +25,7 @@ const SuggestionsBox = ({
     ?.filter(video => video.popularity > 1)
     .sort((a, b) => b.popularity - a.popularity);
 
-  //   console.log(sortedByPopularity);
+  console.log(sortedByPopularity);
 
   const handleSuggestionClick = (type, id) => {
     console.log(type, id);
@@ -34,12 +35,8 @@ const SuggestionsBox = ({
     setOpenMenu(false);
   };
 
-  const dropDownClasses = searchTerm
-    ? 'search-drop-down show'
-    : 'search-drop-down';
-
   return (
-    <div className={dropDownClasses}>
+    <div className="search-drop-down">
       <ul>
         {sortedByPopularity.map((video, idx) => (
           <li

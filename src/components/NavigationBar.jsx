@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Avatar, Box, Stack } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -127,8 +127,9 @@ const NavigationBar = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (showSuggestions) setShowResults(true);
-      else {
+      if (showSuggestions) {
+        setShowResults(true);
+      } else {
         setShowResults(false);
       }
     }, 1000);
@@ -136,7 +137,7 @@ const NavigationBar = () => {
     return () => {
       // console.log('clean');
       clearTimeout(timer);
-      setShowResults(false);
+      // setShowResults(false);
     };
   }, [showSuggestions, searchTerm]);
 
@@ -219,14 +220,25 @@ const NavigationBar = () => {
         <button>
           <SearchIcon />
         </button>
-        {showSuggestions && showResults && (
+        <CSSTransition
+          in={showSuggestions && showResults}
+          mountOnEnter
+          unmountOnExit
+          timeout={{ enter: 2000, exit: 2000 }}
+          classNames={{
+            enter: '',
+            enterActive: 'dropdown show',
+            exit: '',
+            exitActive: 'dropdown hide',
+          }}
+        >
           <SuggestionsBox
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
             setShowCategory={setShowCategory}
             setOpenMenu={setOpenMenu}
           />
-        )}
+        </CSSTransition>
       </form>
     </ul>
   );

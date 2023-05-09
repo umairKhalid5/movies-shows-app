@@ -121,6 +121,14 @@ svg {
   pointer-events: none;
   animation: slideOut 0.5s ease-out forwards;
 }
+.search .dropdown.show {
+  pointer-events: auto;
+  animation: slideIn 2000ms ease-out forwards;
+}
+.search .dropdown.hide {
+  pointer-events: none;
+  animation: slideOut 2000ms ease-out forwards;
+}
 nav .subMenu {
   position: relative;
 }
@@ -172,11 +180,6 @@ nav .subMenu .subList {
   padding: 0.5rem 1rem;
   max-height: 320px;
   overflow-y: auto;
-  opacity: 0;
-}
-.search .search-drop-down.show {
-  opacity: 1;
-  transition: opacity 0.2s ease;
 }
 .search .search-drop-down::-webkit-scrollbar {
   width: 3px;
