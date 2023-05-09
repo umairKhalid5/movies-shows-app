@@ -111,7 +111,6 @@ svg {
   display: flex;
   margin: 0 0 0 20px;
   padding: 0 2px 0 0;
-  /* transition: opacity 0.3s ease; */
 }
 .navSlide.show {
   pointer-events: auto;
@@ -120,14 +119,6 @@ svg {
 .navSlide.hide {
   pointer-events: none;
   animation: slideOut 0.5s ease-out forwards;
-}
-.search .dropdown.show {
-  pointer-events: auto;
-  animation: slideIn 1s ease-out forwards;
-}
-.search .dropdown.hide {
-  pointer-events: none;
-  animation: slideOut 500ms ease-out forwards;
 }
 nav .subMenu {
   position: relative;

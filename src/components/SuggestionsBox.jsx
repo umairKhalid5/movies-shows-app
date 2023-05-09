@@ -24,10 +24,7 @@ const SuggestionsBox = ({
     ?.filter(video => video.popularity > 1)
     .sort((a, b) => b.popularity - a.popularity);
 
-  console.log(sortedByPopularity);
-
   const handleSuggestionClick = (type, id) => {
-    console.log(type, id);
     navigate(`/${type === 'movie' ? type : 'show'}/${id}`);
     setSearchTerm('');
     setShowCategory('');
