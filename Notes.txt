@@ -1,1 +1,3 @@
 Clear commented out code.
+Edit the Cast Component.
+Update media query units from px to ems
