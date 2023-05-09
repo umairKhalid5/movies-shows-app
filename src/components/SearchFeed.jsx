@@ -26,7 +26,7 @@ const SearchFeed = () => {
   };
 
   if (isFetching) return;
-  // console.log(searchResults);
+  console.log(searchResults);
 
   const movies = searchResults?.results?.filter(
     video => video.media_type === 'movie'

@@ -53,6 +53,8 @@ const NavigationBar = () => {
   const [showCategory, setShowCategory] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
+  const [showSuggestions, setShowSuggestions] = useState(true);
+
   const [winSize, setWinSize] = useState(window.innerWidth);
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -113,6 +115,12 @@ const NavigationBar = () => {
     setSearchTerm('');
     setShowCategory('');
     setOpenMenu(false);
+  };
+
+  const handleChange = e => {
+    setSearchTerm(e.target.value);
+    if (e.target.value.length > 0) setShowSuggestions(true);
+    else setShowSuggestions(false);
   };
 
   const MainNav = (
@@ -189,11 +197,31 @@ const NavigationBar = () => {
           type="text"
           placeholder="Search"
           value={searchTerm}
-          onChange={e => setSearchTerm(e.target.value)}
+          onChange={handleChange}
         />
         <button>
           <SearchIcon />
         </button>
+        {showSuggestions && (
+          <div className="search-drop-down">
+            <ul>
+              <li>
+                <img
+                  src="https://image.tmdb.org/t/p/w1280//ngl2FKBlU4fhbdsrtdom9LVLBXw.jpg"
+                  alt=""
+                />
+                <p>Movie Name</p>
+              </li>
+              <li>
+                <img
+                  src="https://image.tmdb.org/t/p/w1280//t6HIqrRAclMCA60NsSmeqe9RmNV.jpg"
+                  alt=""
+                />
+                <p>Movie Name</p>
+              </li>
+            </ul>
+          </div>
+        )}
       </form>
     </ul>
   );
@@ -222,86 +250,6 @@ const NavigationBar = () => {
           <MenuIcon onClick={() => setOpenMenu(!openMenu)} />
         </div>
       )}
-      {/* //? Commented out to test CSS transitions group */}
-      {/* <ul
-        className={!openMenu ? 'desk-nav-list' : 'desk-nav-list show'}
-        ref={subMenuRef}
-      >
-        <li>
-          <NavLink
-            to=""
-            className={navData => (navData.isActive ? 'active' : '')}
-            onClick={() => {
-              setOpenMenu(false);
-              setShowCategory('');
-            }}
-          >
-            <button className="navbar-item-button">
-              <p>
-                <i style={{ marginTop: '4px' }}>
-                  <HomeIcon />
-                </i>
-                Home
-              </p>
-            </button>
-          </NavLink>
-        </li>
-
-        {navItems.map(item => (
-          <li className="subMenu" key={item.text}>
-            <button
-              className="navbar-item-button"
-              onClick={() =>
-                showCategory !== item.text
-                  ? setShowCategory(item.text)
-                  : setShowCategory('')
-              }
-            >
-              <p>
-                <i style={{ marginTop: '4px' }}>{item.icon}</i>
-                {item.text}
-                <ArrowDropDownIcon />
-              </p>
-            </button>
-            {showCategory === item.text && (
-              <ul className="subList">
-                {(item.text === 'Movies' ? movieItems : showItems).map(el => (
-                  <li key={el.text}>
-                    <NavLink
-                      to={el.path}
-                      className={navData => (navData.isActive ? 'active' : '')}
-                    >
-                      <button
-                        className="navbar-item-button"
-                        onClick={() => {
-                          setShowCategory('');
-                          setOpenMenu(false);
-                        }}
-                      >
-                        <p>
-                          <i style={{ marginTop: '4px' }}>{el.icon}</i>
-                          {el.text}
-                        </p>
-                      </button>
-                    </NavLink>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-        ))}
-        <form className="search" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Search"
-            value={searchTerm}
-            onChange={e => setSearchTerm(e.target.value)}
-          />
-          <button>
-            <SearchIcon />
-          </button>
-        </form>
-      </ul> */}
 
       {/* //? Css Transitions Group */}
       {winSize > 800 ? (

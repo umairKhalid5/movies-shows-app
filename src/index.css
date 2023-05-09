@@ -113,14 +113,6 @@ svg {
   padding: 0 2px 0 0;
   /* transition: opacity 0.3s ease; */
 }
-/* .desk-nav-list.show {
-  pointer-events: auto;
-  animation: slide 1s linear forwards;
-} */
-/* .navSlide {
-  transform: translate(0, 0);
-  opacity: 1;
-} */
 .navSlide.show {
   pointer-events: auto;
   animation: slideIn 1s ease-out forwards;
@@ -169,6 +161,32 @@ nav .subMenu .subList {
 }
 .search button:hover svg {
   color: rgba(235, 28, 36, 1);
+}
+.search .search-drop-down {
+  position: absolute;
+  background-color: #1a171e;
+  top: 100%;
+  right: 0;
+  left: 0;
+  border-radius: 10px;
+  border: 1px solid #eb1c24;
+  padding: 0.5rem 1rem;
+}
+.search-drop-down li {
+  width: 100%;
+  /* background-color: #eb1c24; */
+  /* border: 1px solid green; */
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.search-drop-down li img {
+  max-width: 40px;
+  object-fit: cover;
+}
+.search-drop-down li p {
+  font-size: 1em;
 }
 .active {
   border-bottom: 2px solid rgba(235, 28, 36, 1);
@@ -488,7 +506,16 @@ nav .subMenu .subList {
     display: none;
   }
   .navbar-item-button {
-    margin: 10px 5px;
+    margin: 15px 5px;
+  }
+  .navbar-item-button p {
+    font-size: 16px;
+  }
+  .navbar-item-button i {
+    margin-right: 10px;
+  }
+  .navbar-item-button i svg {
+    font-size: 24px;
   }
   .desk-nav-list .search {
     margin-left: 0px;
@@ -497,6 +524,7 @@ nav .subMenu .subList {
   }
   .search input {
     width: 90%;
+    font-size: 16px;
   }
   .search button {
     right: 10%;
@@ -576,5 +604,8 @@ nav .subMenu .subList {
   }
   .pagination {
     gap: 5px;
+  }
+  .search input {
+    font-size: 14px;
   }
 }
