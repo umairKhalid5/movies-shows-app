@@ -115,14 +115,12 @@ const NavigationBar = () => {
   //! Hide Suggestions Box when clicked outside
   useEffect(() => {
     const hideSuggestionBox = e => {
-      console.log(e.target);
       if (
         !e.target.classList.contains('search-drop-down') &&
         !e.target.closest('search-drop-down') &&
         e.target.id !== 'search-input'
-      ) {
+      )
         setShowSuggestions(false);
-      }
     };
 
     window.addEventListener('click', hideSuggestionBox);

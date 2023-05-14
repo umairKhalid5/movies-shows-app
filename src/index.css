@@ -193,6 +193,7 @@ nav .subMenu .subList {
 }
 .search-drop-down li img {
   max-width: 40px;
+  width: 40px;
   margin-right: 0.8em;
   object-fit: cover;
   border-radius: 5px;

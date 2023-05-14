@@ -26,7 +26,7 @@ const SearchFeed = () => {
   };
 
   if (isFetching) return;
-  console.log(searchResults);
+  // console.log(searchResults);
 
   const movies = searchResults?.results?.filter(
     video => video.media_type === 'movie'
@@ -64,6 +64,11 @@ const SearchFeed = () => {
         </span>
         :
       </h2>
+      {searchResults?.results.length < 1 && (
+        <p style={{ fontSize: '20px', fontWeight: '500', margin: 0 }}>
+          No matches found!
+        </p>
+      )}
       {moviesFirst ? (
         <>
           {moviesDisplays}
@@ -76,25 +81,27 @@ const SearchFeed = () => {
         </>
       )}
 
-      <div className="pagination" style={{ margin: 'auto' }}>
-        <button disabled={searchPage === 1} onClick={() => setSearchPage(1)}>
-          Page 1
-        </button>
-        <button
-          disabled={searchPage <= 1}
-          onClick={() => handlePagination('prev')}
-        >
-          Prev
-        </button>
-        <button
-          disabled={
-            searchPage > 5 || searchResults?.total_pages < searchPage + 1
-          }
-          onClick={() => handlePagination('next')}
-        >
-          Next
-        </button>
-      </div>
+      {searchResults?.results.length > 0 && (
+        <div className="pagination" style={{ margin: 'auto' }}>
+          <button disabled={searchPage === 1} onClick={() => setSearchPage(1)}>
+            Page 1
+          </button>
+          <button
+            disabled={searchPage <= 1}
+            onClick={() => handlePagination('prev')}
+          >
+            Prev
+          </button>
+          <button
+            disabled={
+              searchPage > 5 || searchResults?.total_pages < searchPage + 1
+            }
+            onClick={() => handlePagination('next')}
+          >
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 };

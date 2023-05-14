@@ -20,6 +20,8 @@ const SuggestionsBox = ({
 
   if (isFetching) return;
 
+  // console.log(searchResults);
+
   const sortedByPopularity = searchResults?.results
     ?.filter(video => video.popularity > 1)
     .sort((a, b) => b.popularity - a.popularity);
@@ -34,23 +36,25 @@ const SuggestionsBox = ({
   return (
     <div className="search-drop-down">
       <ul>
-        {sortedByPopularity.map((video, idx) => (
-          <li
-            key={idx}
-            onClick={() => handleSuggestionClick(video.media_type, video.id)}
-          >
-            <img
-              src={
-                video?.poster_path
-                  ? `${IMG_PATH}/${video?.poster_path}`
-                  : demoPoster
-              }
-              alt={video?.name || video?.title}
-              loading="lazy"
-            />
-            <p>{video?.name || video?.title}</p>
-          </li>
-        ))}
+        {searchResults?.results.length < 1 && <li>No Matches Available</li>}
+        {searchResults?.results.length > 1 &&
+          sortedByPopularity.map((video, idx) => (
+            <li
+              key={idx}
+              onClick={() => handleSuggestionClick(video.media_type, video.id)}
+            >
+              <img
+                src={
+                  video?.poster_path
+                    ? `${IMG_PATH}/${video?.poster_path}`
+                    : demoPoster
+                }
+                alt={video?.name || video?.title}
+                loading="lazy"
+              />
+              <p>{video?.name || video?.title}</p>
+            </li>
+          ))}
       </ul>
     </div>
   );
