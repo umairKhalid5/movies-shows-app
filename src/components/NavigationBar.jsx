@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { Avatar, Box, Stack } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
@@ -15,8 +15,8 @@ import { CSSTransition } from 'react-transition-group';
 import SuggestionsBox from './SuggestionsBox';
 
 const navItems = [
-  { text: 'Movies', icon: <TheatersIcon /> },
-  { text: 'Shows', icon: <LiveTvIcon /> },
+  { text: 'Movies', icon: <TheatersIcon />, short: 'movies' },
+  { text: 'Shows', icon: <LiveTvIcon />, short: 'tv' },
 ];
 
 const movieItems = [
@@ -51,6 +51,8 @@ const showItems = [
 ];
 
 const NavigationBar = () => {
+  const { pathname } = useLocation();
+
   const [showCategory, setShowCategory] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -145,13 +147,14 @@ const NavigationBar = () => {
     else setShowSuggestions(false);
   };
 
+  //* Wait 500ms before sending search request to backend upon typing
   useEffect(() => {
     const timer = setTimeout(() => {
       if (showSuggestions) setShowResults(true);
       else {
         setShowResults(false);
       }
-    }, 1000);
+    }, 500);
 
     return () => {
       // console.log('clean');
@@ -187,7 +190,15 @@ const NavigationBar = () => {
       </li>
 
       {navItems.map(item => (
-        <li className="subMenu" key={item.text}>
+        // <li className="subMenu selected" key={item.text}>
+        <li
+          className={`${
+            pathname.toLocaleLowerCase().includes(item.short)
+              ? 'subMenu selected'
+              : 'subMenu'
+          }`}
+          key={item.text}
+        >
           <button
             className="navbar-item-button"
             onClick={() =>

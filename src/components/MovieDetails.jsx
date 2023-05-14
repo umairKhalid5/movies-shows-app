@@ -50,8 +50,12 @@ const MovieDetails = ({ timeFormatter }) => {
 
   if (fetchingMovie || fetchingVideos || fetchingCast || fetchingSimilar)
     return <Loader />;
-  // console.log(singleMovie);
+
   // console.log('videos', videos);
+
+  const tagline = singleMovie?.tagline;
+  const taglineToUse =
+    tagline[tagline.length - 1] === '.' ? tagline?.slice(0, -1) : tagline;
 
   const movieTrailer1 = videos?.results?.filter(
     video => video.name === 'Official Trailer'
@@ -129,9 +133,7 @@ const MovieDetails = ({ timeFormatter }) => {
         {/* //? Details on the right */}
         <div className={classes.detailsContainer}>
           <div className={classes.card}>
-            <h1 className={classes.tagline}>
-              {singleMovie?.tagline?.slice(0, -1)}
-            </h1>
+            <h1 className={classes.tagline}>{taglineToUse}</h1>
             <h2 className={classes.title}>{singleMovie?.title}</h2>
             <span className={classes.details}>
               <StarIcon sx={{ mr: 0.5, color: '#FFD700' }} />

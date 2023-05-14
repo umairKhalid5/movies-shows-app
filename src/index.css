@@ -123,6 +123,12 @@ svg {
 nav .subMenu {
   position: relative;
 }
+.subMenu.selected > button:first-of-type {
+  border-bottom: 2px solid rgba(235, 28, 36, 1);
+}
+.subMenu.selected > button i > svg:first-of-type {
+  color: rgba(235, 28, 36, 1);
+}
 nav .subMenu .subList {
   position: absolute;
   top: 45px;
@@ -192,9 +198,8 @@ nav .subMenu .subList {
   background-color: hsl(266, 13%, 15%);
 }
 .search-drop-down li img {
-  max-width: 40px;
   width: 40px;
-  margin-right: 0.8em;
+  max-width: 40px;
   object-fit: cover;
   border-radius: 5px;
 }
@@ -202,6 +207,7 @@ nav .subMenu .subList {
   font-size: 0.8em;
   text-align: left;
   margin-block: 0;
+  margin-left: 0.8rem;
 }
 .active {
   border-bottom: 2px solid rgba(235, 28, 36, 1);

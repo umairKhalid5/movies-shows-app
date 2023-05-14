@@ -37,7 +37,7 @@ const SuggestionsBox = ({
     <div className="search-drop-down">
       <ul>
         {searchResults?.results.length < 1 && <li>No Matches Available</li>}
-        {searchResults?.results.length > 1 &&
+        {searchResults?.results.length >= 1 &&
           sortedByPopularity.map((video, idx) => (
             <li
               key={idx}
@@ -52,7 +52,13 @@ const SuggestionsBox = ({
                 alt={video?.name || video?.title}
                 loading="lazy"
               />
-              <p>{video?.name || video?.title}</p>
+              <p>
+                {video?.name || video?.title} (
+                {new Date(
+                  video?.release_date || video?.first_air_date
+                )?.getFullYear()}
+                )
+              </p>
             </li>
           ))}
       </ul>

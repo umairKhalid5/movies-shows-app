@@ -63,7 +63,9 @@ const ShowDetails = ({ timeFormatter }) => {
   if (fetchingShow || fetchingCast || fetchingSimilar || fetchingVideos)
     return <Loader />;
 
-  // console.log(singleShow);
+  const tagline = singleShow?.tagline;
+  const taglineToUse =
+    tagline[tagline.length - 1] === '.' ? tagline?.slice(0, -1) : tagline;
 
   const showTrailer1 = videos?.results?.filter(
     video => video.name === 'Official Trailer'
@@ -122,7 +124,7 @@ const ShowDetails = ({ timeFormatter }) => {
         {/* //? Details on the right */}
         <div className={classes.detailsContainer}>
           <div className={classes.card}>
-            <h1 className={classes.tagline}>{singleShow?.tagline}</h1>
+            <h1 className={classes.tagline}>{taglineToUse}</h1>
             <h2 className={classes.title}>{singleShow?.name}</h2>
             <span className={classes.details}>
               <StarIcon sx={{ mr: 0.5, color: '#FFD700' }} />
