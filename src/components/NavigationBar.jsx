@@ -77,6 +77,7 @@ const NavigationBar = () => {
     </>
   );
 
+  //! Update window size!
   useEffect(() => {
     const updateWindowSize = () => {
       const size = window.innerWidth;
@@ -87,6 +88,7 @@ const NavigationBar = () => {
     return () => window.removeEventListener('resize', updateWindowSize);
   }, []);
 
+  //! Hide Submenu when clicked outside!
   useEffect(() => {
     // if (winSize < 801) return;
     const hideSubMenu = e => {
@@ -109,6 +111,26 @@ const NavigationBar = () => {
       window.removeEventListener('click', hideSubMenu);
     };
   }, [openMenu]);
+
+  //! Hide Suggestions Box when clicked outside
+  useEffect(() => {
+    const hideSuggestionBox = e => {
+      console.log(e.target);
+      if (
+        !e.target.classList.contains('search-drop-down') &&
+        !e.target.closest('search-drop-down') &&
+        e.target.id !== 'search-input'
+      ) {
+        setShowSuggestions(false);
+      }
+    };
+
+    window.addEventListener('click', hideSuggestionBox);
+
+    return () => {
+      window.removeEventListener('click', hideSuggestionBox);
+    };
+  }, [showSuggestions]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -215,6 +237,7 @@ const NavigationBar = () => {
           placeholder="Search"
           value={searchTerm}
           onChange={handleChange}
+          id="search-input"
         />
         <button>
           <SearchIcon />

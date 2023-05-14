@@ -17,6 +17,7 @@ import demoBackdrop from '../assets/demoBackdrop.jpg';
 import demoPoster from '../assets/demoPoster.jpg';
 import Loader from './Loader';
 import ShowMiniPosters from './ShowMiniPosters';
+import { CSSTransition } from 'react-transition-group';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 
@@ -192,19 +193,29 @@ const ShowDetails = ({ timeFormatter }) => {
       </div>
 
       {/* //?Trailer */}
-      {trailer && (
+      <CSSTransition
+        in={trailer}
+        mountOnEnter
+        unmountOnExit
+        timeout={{ enter: 1000, exit: 500 }}
+        classNames={{
+          enter: '',
+          enterActive: 'navSlide show',
+          exit: '',
+          exitActive: 'navSlide hide',
+        }}
+      >
         <div
           className={classes.videoSection}
           ref={trailerRef}
           onClick={() => setTrailer(false)}
         >
           <div className={classes.videoContainer}>
-            {/* <h2>Trailer: </h2> */}
             <ReactPlayer url={youTubeURL} className="react-player" controls />
           </div>
           <button onClick={() => setTrailer(false)}>X</button>
         </div>
-      )}
+      </CSSTransition>
 
       {/* //? All Seasons Posters */}
       <ShowMiniPosters seasons={singleShow?.seasons} id={singleShow?.id} />

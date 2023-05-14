@@ -17,6 +17,7 @@ import SimilarMovies from './SimilarMovies';
 import demoBackdrop from '../assets/demoBackdrop.jpg';
 import demoPoster from '../assets/demoPoster.jpg';
 import Loader from './Loader';
+import { CSSTransition } from 'react-transition-group';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 
@@ -191,7 +192,18 @@ const MovieDetails = ({ timeFormatter }) => {
       </div>
 
       {/* //?Trailer */}
-      {trailer && (
+      <CSSTransition
+        in={trailer}
+        mountOnEnter
+        unmountOnExit
+        timeout={{ enter: 1000, exit: 500 }}
+        classNames={{
+          enter: '',
+          enterActive: 'navSlide show',
+          exit: '',
+          exitActive: 'navSlide hide',
+        }}
+      >
         <div
           className={classes.videoSection}
           ref={trailerRef}
@@ -203,7 +215,7 @@ const MovieDetails = ({ timeFormatter }) => {
           </div>
           <button onClick={() => setTrailer(false)}>X</button>
         </div>
-      )}
+      </CSSTransition>
       {/* //? Cast & Crew */}
       <Credits credits={movieCredits} />
 
