@@ -27,12 +27,12 @@ const options = {
   day: 'numeric',
 };
 
-const dateFormatter = date => {
-  const formattedDate = new Intl.DateTimeFormat('en-US', options).format(
-    new Date(date)
-  );
-  return formattedDate;
-};
+// const dateFormatter = date => {
+//   const formattedDate = new Intl.DateTimeFormat('en-US', options).format(
+//     new Date(date)
+//   );
+//   return formattedDate;
+// };
 
 const ShowDetails = ({ timeFormatter }) => {
   const [trailer, setTrailer] = useState(false);
@@ -63,6 +63,8 @@ const ShowDetails = ({ timeFormatter }) => {
   if (fetchingShow || fetchingCast || fetchingSimilar || fetchingVideos)
     return <Loader />;
 
+  // console.log(singleShow);
+
   const tagline = singleShow?.tagline;
   const taglineToUse =
     tagline[tagline.length - 1] === '.' ? tagline?.slice(0, -1) : tagline;
@@ -86,8 +88,8 @@ const ShowDetails = ({ timeFormatter }) => {
     }`;
 
   const genres = singleShow?.genres?.map(show => show?.name).join(', ');
-  const firstAirDate = dateFormatter(singleShow?.first_air_date);
-  const lastAirDate = dateFormatter(singleShow?.last_air_date);
+  const firstAirDate = new Date(singleShow?.first_air_date).getFullYear();
+  const lastAirDate = new Date(singleShow?.last_air_date).getFullYear();
 
   const totalSeasons = singleShow?.number_of_seasons || 'Unavailable';
   const totalEpisodes = singleShow?.number_of_episodes || 'Not yet Released';
@@ -140,13 +142,10 @@ const ShowDetails = ({ timeFormatter }) => {
                 •<div>{timeFormatter(singleShow?.episode_run_time[0])}</div>•
                 <div>{genres}</div>•
                 <div>
-                  <strong>{firstAirDate}</strong>
+                  <strong>
+                    {firstAirDate} - {lastAirDate}
+                  </strong>
                 </div>
-                -
-                <div>
-                  <strong>{lastAirDate}</strong>
-                </div>
-                {/* • <div>{singleShow?.networks[0]?.name}</div> */}
               </span>
             </span>
             <p className={classes.desc}>{singleShow?.overview}</p>

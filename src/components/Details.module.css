@@ -149,7 +149,7 @@
 .totalVotes {
   color: #d6d6d6;
   font-size: 14px;
-  margin-right: 20px;
+  /* margin-right: 1px; */
 }
 .genre {
   color: #ececec;
