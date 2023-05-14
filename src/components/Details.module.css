@@ -221,9 +221,9 @@
   /* .imageContainer {
     height: auto;
   } */
-  .imageContainer::before {
-    /* display: none; */
-  }
+  /* .imageContainer::before {
+    display: none;
+  } */
   .posterContainer {
     display: none;
   }
