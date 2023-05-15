@@ -47,7 +47,9 @@ const SeasonDetails = ({ timeFormatter }) => {
         size="small"
         sx={{
           ml: 1,
+          mt: -0.5,
           borderRadius: '4px',
+          minWidth: 60,
         }}
         onChange={handleSelect}
         className={classes.seasonSelect}
