@@ -163,6 +163,29 @@ const NavigationBar = () => {
     };
   }, [showSuggestions, searchTerm]);
 
+  const searchForm = (
+    <form className="search" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Search"
+        value={searchTerm}
+        onChange={handleChange}
+        id="search-input"
+      />
+      <button>
+        <SearchIcon />
+      </button>
+      {showSuggestions && showResults && (
+        <SuggestionsBox
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          setShowCategory={setShowCategory}
+          setOpenMenu={setOpenMenu}
+        />
+      )}
+    </form>
+  );
+
   const MainNav = (
     <ul
       // className={!openMenu ? 'desk-nav-list' : 'desk-nav-list show'}
@@ -240,27 +263,6 @@ const NavigationBar = () => {
           )}
         </li>
       ))}
-      <p>its me</p>
-      {/* <form className="search" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Search"
-          value={searchTerm}
-          onChange={handleChange}
-          id="search-input"
-        />
-        <button>
-          <SearchIcon />
-        </button>
-        {showSuggestions && showResults && (
-          <SuggestionsBox
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            setShowCategory={setShowCategory}
-            setOpenMenu={setOpenMenu}
-          />
-        )}
-      </form> */}
     </ul>
   );
 
@@ -280,18 +282,29 @@ const NavigationBar = () => {
       bgcolor="#1a171e"
       color="#fff"
     >
-      <Stack direction="row" pl={2}>
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        px={1}
+        width={winSize < 801 ? '100%' : 'auto'}
+      >
         {navDetailsLeft}
+        {winSize < 801 && (
+          <div className="mobileNav">
+            {searchForm}
+            <div className="hamburgerMenu">
+              <MenuIcon onClick={() => setOpenMenu(!openMenu)} />
+            </div>
+          </div>
+        )}
       </Stack>
-      {winSize < 801 && (
-        <div className="hamburgerMenu">
-          <MenuIcon onClick={() => setOpenMenu(!openMenu)} />
-        </div>
-      )}
 
       {/* //? Css Transitions Group */}
       {winSize > 800 ? (
-        MainNav
+        <>
+          {MainNav}
+          {searchForm}
+        </>
       ) : (
         <CSSTransition
           in={openMenu}

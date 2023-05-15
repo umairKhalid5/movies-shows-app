@@ -66,6 +66,9 @@ ul {
   margin: 0;
   padding: 0;
 }
+nav {
+  width: 100%;
+}
 nav a {
   width: 100%;
   text-decoration: none;
@@ -138,19 +141,23 @@ nav .subMenu .subList {
   z-index: 200;
   border-radius: 0 0 5px 5px;
 }
-.desk-nav-list .search {
+form.search {
   margin-left: 30px;
   display: flex;
   align-items: center;
   position: relative;
+  margin-right: 1rem;
+  width: clamp(360px, 100% - 45rem, 700px);
 }
 .search input {
-  width: 300px;
+  /* width: 350px; */
+  width: 100%;
   outline: none;
   border: 1px solid #9e9e9e;
   border-radius: 25px;
   font-size: 16px;
   padding: 12px;
+  padding-right: 2rem;
   transition: all 0.3s ease;
 }
 .search input:focus {
@@ -475,12 +482,12 @@ nav .subMenu .subList {
   .desk-nav-list {
     margin: 0 0 0 8px;
   }
-  .desk-nav-list .search {
-    margin-left: 8px;
+  form.search {
+    margin-left: 15px;
   }
   .search input {
-    width: 290px;
-    font-size: 14px;
+    /* width: 350px; */
+    /* font-size: 14px; */
   }
   .search button {
     right: 0;
@@ -513,8 +520,9 @@ nav .subMenu .subList {
     z-index: 2000;
     inset: 0;
     margin-left: 0;
-    top: 55px;
+    top: 64px;
     background-color: #1a171e;
+
     padding: 10px;
   }
   nav .subMenu .subList {
@@ -538,17 +546,24 @@ nav .subMenu .subList {
   .navbar-item-button i svg {
     font-size: 24px;
   }
-  .desk-nav-list .search {
-    margin-left: 0px;
-    margin-top: 10px;
-    padding-bottom: 15px;
+  a.logo {
+    width: auto;
+  }
+  .mobileNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    margin-left: 0.5rem;
+  }
+  form.search {
+    width: 90%;
+    margin: 0;
+    margin-right: 0.5rem;
   }
   .search input {
-    width: 90%;
+    width: 100%;
     font-size: 16px;
-  }
-  .search button {
-    right: 10%;
   }
 }
 
@@ -598,14 +613,17 @@ nav .subMenu .subList {
   .scrollTopBtn svg {
     font-size: 22px;
   }
-  .search input {
+  form.search {
     width: 100%;
   }
-  .search button {
-    right: 0.5%;
+  .search input {
+    font-size: 15px;
   }
 }
 @media only screen and (max-width: 450px) {
+  .logo h2 {
+    font-size: 16px;
+  }
   .main {
     padding: 0 5px;
   }
@@ -614,19 +632,24 @@ nav .subMenu .subList {
     letter-spacing: normal !important;
     line-height: normal !important;
   }
+  .search input {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .logo h2 {
+    display: none;
+  }
+  form.search {
+    margin-left: -0.6rem;
+  }
 }
 @media only screen and (max-width: 280px) {
-  /* .scrollTopContainer {
-    bottom: 41px !important;
-  } */
   .scrollTopBtn {
     height: 25px !important;
     width: 25px !important;
   }
   .pagination {
     gap: 5px;
-  }
-  .search input {
-    font-size: 14px;
   }
 }
