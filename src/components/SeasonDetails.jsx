@@ -6,6 +6,7 @@ import demoBackdrop from '../assets/demoBackdrop.jpg';
 import StarIcon from '@mui/icons-material/Star';
 import Loader from './Loader';
 import ShowMiniPosters from './ShowMiniPosters';
+import { MenuItem, TextField } from '@mui/material';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 
@@ -35,20 +36,39 @@ const SeasonDetails = ({ timeFormatter }) => {
   };
   let seasonsTotal = [];
   let selectMenu;
+
   if (!fetchingShow) {
     seasonsTotal = new Array(singleShow?.number_of_seasons).fill(1);
     selectMenu = seasonsTotal.length > 0 && (
-      <select
+      <TextField
+        id="select-season-number"
+        select
         value={seasonNumber}
+        size="small"
+        sx={{
+          ml: 1,
+          borderRadius: '4px',
+        }}
         onChange={handleSelect}
-        className={classes.selectMenu}
+        className={classes.seasonSelect}
       >
         {seasonsTotal?.map((_, i) => (
-          <option key={i} value={i + 1}>
+          <MenuItem sx={{ fontSize: 12 }} key={i} value={i + 1}>
             {i + 1}
-          </option>
+          </MenuItem>
         ))}
-      </select>
+      </TextField>
+      // <select
+      //   value={seasonNumber}
+      //   onChange={handleSelect}
+      //   className={classes.selectMenu}
+      // >
+      //   {seasonsTotal?.map((_, i) => (
+      //     <option key={i} value={i + 1}>
+      //       {i + 1}
+      //     </option>
+      //   ))}
+      // </select>
     );
   }
 

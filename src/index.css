@@ -38,6 +38,7 @@ body {
   font-family: 'Poppins';
   position: relative;
   min-height: calc(100vh - 222px);
+  /* background: rgb(209, 209, 209); */
 }
 
 .logo {
