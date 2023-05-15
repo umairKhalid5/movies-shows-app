@@ -154,7 +154,7 @@ const NavigationBar = () => {
       else {
         setShowResults(false);
       }
-    }, 500);
+    }, 400);
 
     return () => {
       // console.log('clean');
@@ -240,7 +240,8 @@ const NavigationBar = () => {
           )}
         </li>
       ))}
-      <form className="search" onSubmit={handleSubmit}>
+      <p>its me</p>
+      {/* <form className="search" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Search"
@@ -259,7 +260,7 @@ const NavigationBar = () => {
             setOpenMenu={setOpenMenu}
           />
         )}
-      </form>
+      </form> */}
     </ul>
   );
 
