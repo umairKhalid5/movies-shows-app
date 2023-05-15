@@ -49,7 +49,7 @@
   font-size: 13px;
 }
 .selectMenu {
-  width: 10%;
+  width: 15%;
   border-radius: 5px;
   padding: 0.5rem;
   outline: 0;
@@ -204,6 +204,9 @@ select:-moz-focusring {
   }
   .singlePoster .details {
     margin-left: 10px;
+  }
+  .selectMenu {
+    width: 25%;
   }
 }
 @media only screen and (max-width: 360px) {
