@@ -24,7 +24,7 @@ const SeasonDetails = ({ timeFormatter }) => {
     seasonNumber,
   });
 
-  if (fetchingShow || isFetching) return <Loader />;
+  // if (fetchingShow || isFetching) return <Loader />;
   // console.log(singleShow, seasonDetails);
   // console.log(singleShow?.number_of_seasons);
   // console.log(...seasonDetails?.episodes);
