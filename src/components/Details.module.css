@@ -216,6 +216,10 @@
   .videoContainer {
     max-width: 85%;
   }
+  .tagline {
+    font-size: 40px;
+    letter-spacing: 1px;
+  }
 }
 @media only screen and (max-width: 950px) {
   /* .imageContainer {
@@ -362,8 +366,8 @@
     letter-spacing: normal;
   }
   .detailsContainer button {
-    font-size: 14px;
-    width: 155px;
+    font-size: 13px;
+    width: 160px;
   }
   .detailsContainer button svg {
     /* display: none; */
@@ -377,6 +381,9 @@
   }
   .videoContainer {
     margin-top: 12rem;
+  }
+  .actions svg {
+    display: none;
   }
 }
 
@@ -397,8 +404,8 @@
     inset: 0;
     background: linear-gradient(
       0deg,
-      rgba(29, 29, 29, 0.8) 65%,
-      rgba(228, 228, 228, 0) 100%
+      rgba(29, 29, 29, 0.8) 60%,
+      rgba(29, 29, 29, 0.3) 100%
     );
   }
 }

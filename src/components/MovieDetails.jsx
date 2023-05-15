@@ -183,7 +183,7 @@ const MovieDetails = ({ timeFormatter }) => {
               )}
               <button
                 onClick={() => window.open(singleMovie?.homepage)}
-                value="_blank"
+                // value="_blank"
               >
                 <LanguageIcon sx={{ color: '#fff', mr: 1 }} />
                 Visit Homepage
