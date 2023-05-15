@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useGetEpisodesQuery, useGetShowQuery } from '../services/getMoviesApi';
 import classes from './SeasonDetails.module.css';
 import demoBackdrop from '../assets/demoBackdrop.jpg';
@@ -14,6 +14,7 @@ const SeasonDetails = ({ timeFormatter }) => {
 
   const params = useParams();
   const { showId, seasonNumber } = params;
+  const navigate = useNavigate();
 
   const { data: singleShow, isFetching: fetchingShow } =
     useGetShowQuery(showId);
@@ -23,8 +24,33 @@ const SeasonDetails = ({ timeFormatter }) => {
     seasonNumber,
   });
 
-  // if (fetchingShow || isFetching) return <Loader />;
+  if (fetchingShow || isFetching) return <Loader />;
   // console.log(singleShow, seasonDetails);
+  // console.log(singleShow?.number_of_seasons);
+  // console.log(...seasonDetails?.episodes);
+
+  const handleSelect = e => {
+    // console.log(e.target.value);
+    navigate(`/show/${showId}/${+e.target.value}`);
+  };
+  let seasonsTotal = [];
+  let selectMenu;
+  if (!fetchingShow) {
+    seasonsTotal = new Array(singleShow?.number_of_seasons).fill(1);
+    selectMenu = seasonsTotal.length > 0 && (
+      <select
+        value={seasonNumber}
+        onChange={handleSelect}
+        className={classes.selectMenu}
+      >
+        {seasonsTotal?.map((_, i) => (
+          <option key={i} value={i + 1}>
+            {i + 1}
+          </option>
+        ))}
+      </select>
+    );
+  }
 
   let options = {
     year: 'numeric',
@@ -75,6 +101,9 @@ const SeasonDetails = ({ timeFormatter }) => {
         <Loader />
       ) : (
         <>
+          <div className={classes.selectContainer}>
+            Season:{seasonsTotal.length > 0 && selectMenu}
+          </div>
           <h2>Season {seasonDetails?.season_number}</h2>
           {seasonDetails?.episodes.map(episode => (
             <div key={episode?.id} className={classes.episode}>
