@@ -273,7 +273,7 @@ const NavigationBar = () => {
         left: 0,
         top: 0,
         right: 0,
-        height: 'auto',
+        // height: 'auto',
         display: 'flex',
         justifyContent: 'flex-start',
         py: 1,
