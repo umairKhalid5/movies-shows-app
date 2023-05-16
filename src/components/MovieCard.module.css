@@ -167,9 +167,6 @@
     white-space: nowrap; */
     width: 90%;
     -webkit-line-clamp: 3;
-    /* display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden; */
   }
   .cardBottomRight button {
     font-size: 12px;
