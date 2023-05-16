@@ -621,6 +621,9 @@ form.search {
   .search input {
     font-size: 15px;
   }
+  .about h2 {
+    font-size: 20px;
+  }
 }
 @media only screen and (max-width: 450px) {
   .logo h2 {
@@ -629,10 +632,13 @@ form.search {
   .main {
     padding: 0 5px;
   }
+  .about h2 {
+    font-size: 18px;
+  }
   .about p {
     font-size: 12px !important;
-    letter-spacing: normal !important;
-    line-height: normal !important;
+    letter-spacing: 0.5px !important;
+    /* line-height: normal !important; */
   }
   .search input {
     font-size: 14px;

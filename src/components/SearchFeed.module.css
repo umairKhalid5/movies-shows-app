@@ -9,3 +9,18 @@
 .searchFeedContainer h2 {
   width: 100%;
 }
+@media only screen and (max-width: 600px) {
+  .searchFeedContainer h2 {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .searchFeedContainer h2 {
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .searchFeedContainer h2 {
+    font-size: 16px;
+  }
+}

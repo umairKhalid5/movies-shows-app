@@ -7,6 +7,7 @@
   /* box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); */
   box-shadow: 0px 0px 15px rgba(238, 238, 238, 0.15);
   border-radius: 8px;
+  margin-top: 0.8rem;
 }
 .sliderContainer > h2 {
   margin: 15px 0 8px 0;

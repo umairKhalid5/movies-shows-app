@@ -124,8 +124,8 @@
   border-radius: 10px;
   background-color: rgba(235, 28, 36, 0.5);
   color: #fff;
-  height: 60px;
-  width: 220px;
+  height: 55px;
+  width: 210px;
   transform: scale(1);
   transition: all 0.1s ease;
   display: inline-flex;
@@ -222,7 +222,7 @@
     letter-spacing: 1px;
   }
 }
-@media only screen and (max-width: 950px) {
+@media only screen and (max-width: 980px) {
   /* .imageContainer {
     height: auto;
   } */
@@ -247,7 +247,7 @@
     );
   } */
   .tagline {
-    font-size: 50px;
+    font-size: 45px;
     letter-spacing: 1px;
   }
   .title {
@@ -305,7 +305,7 @@
 }
 @media only screen and (max-width: 700px) {
   .tagline {
-    font-size: 35px;
+    font-size: 34px;
   }
   .detailsContainer {
     padding: 10px;
@@ -368,7 +368,7 @@
   }
   .detailsContainer button {
     font-size: 13px;
-    width: 160px;
+    width: 140px;
   }
   .detailsContainer button svg {
     /* display: none; */

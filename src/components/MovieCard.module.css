@@ -3,7 +3,7 @@
   overflow: hidden;
   color: #fff;
   position: relative;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   max-width: 100%;
 }
 
@@ -125,6 +125,14 @@
     font-size: 14px;
   }
 }
+@media only screen and (max-width: 700px) {
+  .cardBottomLeft .desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
 @media only screen and (max-width: 480px) {
   .card-bottom {
     padding: 5px;
@@ -153,11 +161,15 @@
     font-size: 12px;
   }
   .cardBottomLeft .desc {
-    text-overflow: ellipsis;
+    /* text-overflow: ellipsis;
     display: block;
-    width: 90%;
     overflow: hidden;
-    white-space: nowrap;
+    white-space: nowrap; */
+    width: 90%;
+    -webkit-line-clamp: 3;
+    /* display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden; */
   }
   .cardBottomRight button {
     font-size: 12px;
