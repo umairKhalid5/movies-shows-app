@@ -1,0 +1,11 @@
+.container {
+  background-color: rgb(49, 49, 49);
+  max-width: 1230px;
+  width: 95%;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+}
+.container img {
+  max-width: 300px;
+  aspect-ratio: 1 / 1.5;
+}
