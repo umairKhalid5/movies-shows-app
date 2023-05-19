@@ -18,6 +18,7 @@ import ShowPoster from './ShowPoster';
 import ShowDetails from './ShowDetails';
 import SeasonDetails from './SeasonDetails';
 import NotFound from './NotFound';
+import ActorDetails from './ActorDetails';
 
 const timeFormatter = minutes => {
   const hours = Math.floor(minutes / 60);
@@ -132,6 +133,8 @@ const Layout = () => {
         />
         <Route path="/search/:search" element={<SearchFeed />} />
         <Route path="/about" element={<About />} />
+
+        <Route path="/person/:id" element={<ActorDetails />} />
 
         {/* <Route path="*" element={<Navigate replace to="" />} /> */}
         <Route path="*" element={<NotFound />} />

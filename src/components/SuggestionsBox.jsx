@@ -25,8 +25,13 @@ const SuggestionsBox = ({
   const sortedByPopularity = searchResults?.results
     ?.filter(video => video.popularity > 1)
     .sort((a, b) => b.popularity - a.popularity);
+  console.log(sortedByPopularity);
 
   const handleSuggestionClick = (type, id) => {
+    if (type === 'person') {
+      navigate(`/person/${id}`);
+      return;
+    }
     navigate(`/${type === 'movie' ? type : 'show'}/${id}`);
     setSearchTerm('');
     setShowCategory('');
@@ -47,6 +52,8 @@ const SuggestionsBox = ({
                 src={
                   video?.poster_path
                     ? `${IMG_PATH}/${video?.poster_path}`
+                    : video?.media_type === 'person' && video?.profile_path
+                    ? `${IMG_PATH}/${video?.profile_path}`
                     : demoPoster
                 }
                 alt={video?.name || video?.title}

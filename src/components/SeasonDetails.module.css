@@ -2,7 +2,9 @@
   width: 1px;
 }
 .container {
-  width: 1220px;
+  max-width: 1220px;
+  /* //? New Property added */
+  width: 99%;
   margin-top: 20px;
   display: flex;
   flex-direction: column;

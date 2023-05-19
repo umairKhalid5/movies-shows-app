@@ -61,6 +61,9 @@ export const moviesApi = createApi({
       query: ({ showId, seasonNumber }) =>
         `tv/${showId}/season/${seasonNumber}?api_key=${key}&language=en-US`,
     }),
+    getPerson: builder.query({
+      query: id => `person/${id}?api_key=${key}&language=en-US`,
+    }),
   }),
 });
 
@@ -82,4 +85,5 @@ export const {
   useGetPopularShowsQuery,
   useGetSearchVideosQuery,
   useGetEpisodesQuery,
+  useGetPersonQuery,
 } = moviesApi;
