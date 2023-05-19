@@ -1,11 +1,151 @@
 .container {
-  background-color: rgb(49, 49, 49);
-  max-width: 1230px;
-  width: 95%;
-  display: grid;
-  grid-template-columns: 300px 1fr;
+  max-width: 95%;
+  width: 99%;
+  padding: 1rem;
 }
-.container img {
-  max-width: 300px;
+.wrapper {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+.actor {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.wrapper .image {
+  width: 200px;
+  border-radius: 0.3rem;
+  overflow: hidden;
+}
+.wrapper img {
+  max-width: 100%;
   aspect-ratio: 1 / 1.5;
+  object-fit: cover;
+}
+.container h3 {
+  margin: 0 0 0.1rem 0;
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+}
+.info p {
+  margin: 0 0 1rem 0;
+  max-height: 244px;
+  overflow-y: auto;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+  padding-right: 0.5rem;
+}
+.info p::-webkit-scrollbar {
+  width: 3px;
+}
+.container h3 span {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #dddddd;
+}
+.container h3 span:first-of-type {
+  margin-left: 0.5rem;
+}
+.field {
+  display: block;
+  margin-top: -5px;
+}
+.info {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.info button {
+  font-family: inherit;
+  font-size: 16px;
+  border-radius: 10px;
+  background-color: rgba(235, 28, 36, 0.5);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  transition: all 0.1s ease;
+  align-self: flex-start;
+  max-width: 100%;
+}
+.info button:hover {
+  background-color: rgba(235, 28, 36, 0.7);
+  box-shadow: 0 3px 5px rgba(48, 5, 6, 0.15);
+}
+.info button:active {
+  background-color: rgba(235, 28, 36, 0.7);
+}
+
+@media (max-width: 800px) {
+  .wrapper {
+    grid-template-columns: 140px 1fr;
+  }
+  .wrapper .image {
+    width: 140px;
+  }
+  .info p {
+    font-size: 0.75rem;
+  }
+  .info button {
+    font-size: 14px;
+    width: 100%;
+  }
+}
+@media (max-width: 850px) {
+  .actor {
+    max-width: 90%;
+  }
+}
+@media (max-width: 630px) {
+  .actor {
+    max-width: 95%;
+  }
+}
+@media (max-width: 600px) {
+  .wrapper {
+    grid-template-columns: 70px 1fr;
+  }
+  .wrapper .image {
+    width: 70px;
+  }
+  .info button {
+    font-size: 12px;
+  }
+  .container h3 {
+    font-size: 1.5rem;
+  }
+  .container h3 span {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 430px) {
+  .wrapper {
+    grid-template-columns: 55px 1fr;
+  }
+  .wrapper .image {
+    width: 55px;
+  }
+  .container h3 {
+    font-size: 1.2rem;
+  }
+  .container h3 span {
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 300px) {
+  .wrapper {
+    grid-template-columns: 35px calc(100% - 35px);
+  }
+  .wrapper .image {
+    width: 35px;
+  }
+  .container h3 {
+    font-size: 1rem;
+    flex-direction: column;
+  }
+  .container h3 span {
+    font-size: 0.7rem;
+  }
 }

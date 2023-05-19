@@ -49,8 +49,8 @@ const ShowPoster = ({
         </h2>
       )}
       <div className={classes.posterContainer}>
-        {showsToUse?.map(show => (
-          <div key={show?.id} className={classes.poster}>
+        {showsToUse?.map((show, idx) => (
+          <div key={idx} className={classes.poster}>
             <img
               src={
                 show?.poster_path

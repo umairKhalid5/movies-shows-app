@@ -50,8 +50,8 @@ const MoviePoster = ({
         </h2>
       )}
       <div className={classes.posterContainer}>
-        {moviesToUse?.map(movie => (
-          <div key={movie?.id} className={classes.poster}>
+        {moviesToUse?.map((movie, idx) => (
+          <div key={idx} className={classes.poster}>
             <img
               src={
                 movie?.poster_path

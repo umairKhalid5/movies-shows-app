@@ -64,6 +64,10 @@ export const moviesApi = createApi({
     getPerson: builder.query({
       query: id => `person/${id}?api_key=${key}&language=en-US`,
     }),
+    getPersonCredits: builder.query({
+      query: id =>
+        `person/${id}/combined_credits?api_key=${key}&language=en-US`,
+    }),
   }),
 });
 
@@ -86,4 +90,5 @@ export const {
   useGetSearchVideosQuery,
   useGetEpisodesQuery,
   useGetPersonQuery,
+  useGetPersonCreditsQuery,
 } = moviesApi;

@@ -30,19 +30,21 @@ const ImageSlider = ({ timeFormatter, popularMovies }) => {
   };
 
   return (
-    <div className={classes.sliderContainer}>
+    <div className={classes.wrapper}>
       <h2>
         <span style={{ color: '#eb1c24' }}>Trending</span> Now:
       </h2>
-      <Slider {...settings} className={classes.sliderComponent}>
-        {popularMovies?.results?.slice(0, 15).map(movie => (
-          <MovieCard
-            key={movie.id}
-            movie={movie}
-            timeFormatter={timeFormatter}
-          />
-        ))}
-      </Slider>
+      <div className={classes.sliderContainer}>
+        <Slider {...settings} className={classes.sliderComponent}>
+          {popularMovies?.results?.slice(0, 15).map(movie => (
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              timeFormatter={timeFormatter}
+            />
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 };

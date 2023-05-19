@@ -1,43 +1,99 @@
 import React from 'react';
-import { useGetPersonQuery } from '../services/getMoviesApi';
+import {
+  useGetPersonCreditsQuery,
+  useGetPersonQuery,
+} from '../services/getMoviesApi';
 import { useParams } from 'react-router-dom';
 import classes from './ActorDetails.module.css';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 import demoPoster from '../assets/demoPoster.jpg';
+import ShowPoster from './ShowPoster';
+import MoviePoster from './MoviePoster';
 
 const ActorDetails = () => {
   const params = useParams();
-  const { data, isFetching } = useGetPersonQuery(params.id);
-  if (isFetching) return;
-  console.log(data);
+  const { data: actorData, isFetching: fetchingActorData } = useGetPersonQuery(
+    params.id
+  );
+  const { data: actorCredits, isFetching: fetchingActorCredits } =
+    useGetPersonCreditsQuery(params.id);
+  if (fetchingActorData || fetchingActorCredits) return;
+  // console.log(actorData);
+
+  const actorTopMovies = actorCredits?.cast?.filter(
+    movie => movie.popularity > 20
+  );
+
+  const fields = {
+    Acting: 'Actor',
+    Directing: 'Director',
+    Sound: 'Music',
+  };
+
+  const movies = actorTopMovies
+    ?.filter(video => video.media_type === 'movie')
+    ?.sort((a, b) => b.vote_average - a.vote_average);
+
+  const shows = actorTopMovies
+    ?.filter(video => video.media_type === 'tv')
+    .sort((a, b) => b.vote_average - a.vote_average);
+
+  // console.log(shows);
+
+  const moviesDisplays = movies.length > 0 && (
+    <MoviePoster movies={{ results: movies }} />
+  );
+
+  const showsDisplays = shows.length > 0 && (
+    <ShowPoster title shows={{ results: shows }} />
+  );
 
   return (
     <div className={classes.container}>
-      <div className={classes.image}>
-        <img
-          src={
-            data?.profile_path
-              ? `${IMG_PATH}/${data?.profile_path}`
-              : demoPoster
+      <div className={classes.actor}>
+        <h3>
+          {actorData?.name}
+          <span>({new Date(actorData?.birthday).getFullYear()}-</span>
+          {
+            <span>
+              {actorData?.deathday
+                ? new Date(actorData?.deathday).getFullYear()
+                : 'Present'}
+              )
+            </span>
           }
-        />
-      </div>
+        </h3>
+        <span className={classes.field}>
+          {fields[actorData?.known_for_department]}
+        </span>
 
-      <div className={classes.info}>
-        <h4>{data?.name}</h4>
-        <span>{data?.known_for_department}</span>
-        <span>Birth: {data?.birthday}</span>
-        {data?.deathday && <span>Death: {data?.deathday}</span>}
-        <p className={classes.bio}>{data?.biography}</p>
-        <button
-          onClick={() =>
-            window.open(`https://www.imdb.com/name/${data?.imdb_id}/`)
-          }
-        >
-          IMDB Profile
-        </button>
+        <div className={classes.wrapper}>
+          <div className={classes.image}>
+            <img
+              src={
+                actorData?.profile_path
+                  ? `${IMG_PATH}/${actorData?.profile_path}`
+                  : demoPoster
+              }
+            />
+          </div>
+
+          <div className={classes.info}>
+            <p className={classes.bio}>{actorData?.biography}</p>
+
+            <button
+              onClick={() =>
+                window.open(`https://www.imdb.com/name/${actorData?.imdb_id}/`)
+              }
+            >
+              IMDB Profile
+            </button>
+          </div>
+        </div>
       </div>
+      {moviesDisplays}
+      {showsDisplays}
     </div>
   );
 };

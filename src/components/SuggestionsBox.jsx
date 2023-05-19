@@ -25,17 +25,20 @@ const SuggestionsBox = ({
   const sortedByPopularity = searchResults?.results
     ?.filter(video => video.popularity > 1)
     .sort((a, b) => b.popularity - a.popularity);
-  console.log(sortedByPopularity);
+  // console.log(sortedByPopularity);
 
   const handleSuggestionClick = (type, id) => {
-    if (type === 'person') {
-      navigate(`/person/${id}`);
-      return;
-    }
-    navigate(`/${type === 'movie' ? type : 'show'}/${id}`);
+    if (type === 'person') navigate(`/person/${id}`);
+    else navigate(`/${type === 'movie' ? type : 'show'}/${id}`);
     setSearchTerm('');
     setShowCategory('');
     setOpenMenu(false);
+  };
+
+  const fields = {
+    Acting: 'Actor',
+    Directing: 'Director',
+    Sound: 'Music',
   };
 
   return (
@@ -63,7 +66,7 @@ const SuggestionsBox = ({
                 {video?.name || video?.title} (
                 {new Date(
                   video?.release_date || video?.first_air_date
-                )?.getFullYear()}
+                )?.getFullYear() || fields[video?.known_for_department]}
                 )
               </p>
             </li>

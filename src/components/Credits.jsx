@@ -2,15 +2,20 @@ import React from 'react';
 import classes from './Credits.module.css';
 const IMG_PATH = 'https://image.tmdb.org/t/p/original';
 import demoProfilePic from '../assets/profilePic.png';
+import { useNavigate } from 'react-router-dom';
 
 const Credits = ({ credits }) => {
+  const navigate = useNavigate();
+
+  const handleClick = id => navigate(`/person/${id}`);
+
   return (
     <>
       <div className={classes.creditsContainer}>
         <h2>Cast:</h2>
         <ul>
           {credits?.cast.map(member => (
-            <li key={member?.id}>
+            <li key={member?.id} onClick={() => handleClick(member?.id)}>
               <img
                 src={
                   member?.profile_path

@@ -1,5 +1,9 @@
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
 .sliderContainer {
-  max-width: 62%;
+  max-width: 78%;
   margin: 0 auto;
   margin-bottom: 40px;
 }
@@ -24,14 +28,22 @@
   margin: 0 -10px;
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1450px) {
   .sliderContainer {
-    max-width: 75%;
+    max-width: 90%;
+  }
+}
+@media only screen and (max-width: 1240px) {
+  .wrapper {
+    width: 80%;
+  }
+  .sliderContainer {
+    max-width: 100%;
   }
 }
 @media only screen and (max-width: 850px) {
-  .sliderContainer {
-    max-width: 90%;
+  .wrapper {
+    width: 90%;
   }
   .sliderContainer > h2 {
     margin: 8px 0 8px 0;
@@ -42,11 +54,16 @@
     height: 10px !important;
   }
 }
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 630px) {
+  .wrapper {
+    width: 95%;
+  }
+}
+/* @media only screen and (max-width: 550px) {
   .sliderContainer {
     max-width: 99%;
   }
-}
+} */
 @media only screen and (max-width: 320px) {
   .sliderContainer > h2 {
     font-size: 20px;
@@ -54,5 +71,10 @@
   .customDots li {
     width: 5px !important;
     height: 5px !important;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .wrapper {
+    max-width: 98%;
   }
 }

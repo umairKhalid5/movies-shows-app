@@ -207,7 +207,6 @@ form.search {
 .search-drop-down li:last-of-type {
   border: none;
   margin-bottom: 0;
-  padding-bottom: 0;
 }
 .search-drop-down li:hover {
   background-color: hsl(266, 13%, 15%);
