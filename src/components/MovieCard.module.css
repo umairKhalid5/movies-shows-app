@@ -161,10 +161,6 @@
     font-size: 12px;
   }
   .cardBottomLeft .desc {
-    /* text-overflow: ellipsis;
-    display: block;
-    overflow: hidden;
-    white-space: nowrap; */
     width: 90%;
     -webkit-line-clamp: 3;
   }
@@ -173,7 +169,7 @@
     padding: 15px 10px;
   }
 }
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 335px) {
   .cardBottomLeft h2 {
     font-size: 14px;
   }
@@ -182,6 +178,9 @@
   }
   .cardBottomRight {
     right: 3px;
+  }
+  .cardBottomLeft .desc {
+    -webkit-line-clamp: 2;
   }
   .cardBottomRight button {
     padding: 15px 8px;

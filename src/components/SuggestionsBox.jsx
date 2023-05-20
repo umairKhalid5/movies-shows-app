@@ -78,7 +78,9 @@ const SuggestionsBox = ({
                   {video?.name || video?.title} (
                   {new Date(
                     video?.release_date || video?.first_air_date
-                  )?.getFullYear() || fields[video?.known_for_department]}
+                  )?.getFullYear() ||
+                    fields[video?.known_for_department] ||
+                    'Unknown'}
                   )
                 </p>
               </li>

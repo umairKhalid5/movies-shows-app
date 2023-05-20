@@ -80,8 +80,8 @@ const MovieDetails = ({ timeFormatter }) => {
     `https://www.youtube.com/watch?v=${
       movieTrailer1[0]?.key || movieTrailer2[0]?.key || videos?.results[0]?.key
     }`;
-
   // console.log(youTubeURL);
+
   const genres = singleMovie?.genres?.map(movie => movie?.name).join(', ');
 
   let options = {
@@ -89,11 +89,14 @@ const MovieDetails = ({ timeFormatter }) => {
     month: 'short',
     day: 'numeric',
   };
-  const releaseDate = new Intl.DateTimeFormat('en-US', options).format(
-    new Date(singleMovie?.release_date)
-  );
-
-  const isReleased = new Date() - new Date(singleMovie?.release_date) > 0;
+  const releaseDate =
+    singleMovie?.release_date.trim() &&
+    new Intl.DateTimeFormat('en-US', options).format(
+      new Date(singleMovie?.release_date)
+    );
+  const isReleased =
+    singleMovie?.release_date.trim() &&
+    new Date() - new Date(singleMovie?.release_date) > 0;
   const budget = singleMovie?.budget
     ? `$${millify(singleMovie?.budget, { precision: 3 })}`
     : 'Unavailable';
@@ -181,43 +184,47 @@ const MovieDetails = ({ timeFormatter }) => {
                   Watch Trailer
                 </button>
               )}
-              <button
-                onClick={() => window.open(singleMovie?.homepage)}
-                // value="_blank"
-              >
-                <LanguageIcon sx={{ color: '#fff', mr: 1 }} />
-                Visit Homepage
-              </button>
+              {singleMovie?.homepage.trim() && (
+                <button
+                  onClick={() => window.open(singleMovie?.homepage)}
+                  // value="_blank"
+                >
+                  <LanguageIcon sx={{ color: '#fff', mr: 1 }} />
+                  Visit Homepage
+                </button>
+              )}
             </div>
           </div>
         </div>
       </div>
 
       {/* //?Trailer */}
-      <CSSTransition
-        in={trailer}
-        mountOnEnter
-        unmountOnExit
-        timeout={{ enter: 1000, exit: 500 }}
-        classNames={{
-          enter: '',
-          enterActive: 'navSlide show',
-          exit: '',
-          exitActive: 'navSlide hide',
-        }}
-      >
-        <div
-          className={classes.videoSection}
-          ref={trailerRef}
-          onClick={() => setTrailer(false)}
+      {youTubeURL && (
+        <CSSTransition
+          in={trailer}
+          mountOnEnter
+          unmountOnExit
+          timeout={{ enter: 1000, exit: 500 }}
+          classNames={{
+            enter: '',
+            enterActive: 'navSlide show',
+            exit: '',
+            exitActive: 'navSlide hide',
+          }}
         >
-          <div className={classes.videoContainer}>
-            {/* <h2>Trailer: </h2> */}
-            <ReactPlayer url={youTubeURL} className="react-player" controls />
+          <div
+            className={classes.videoSection}
+            ref={trailerRef}
+            onClick={() => setTrailer(false)}
+          >
+            <div className={classes.videoContainer}>
+              {/* <h2>Trailer: </h2> */}
+              <ReactPlayer url={youTubeURL} className="react-player" controls />
+            </div>
+            <button onClick={() => setTrailer(false)}>X</button>
           </div>
-          <button onClick={() => setTrailer(false)}>X</button>
-        </div>
-      </CSSTransition>
+        </CSSTransition>
+      )}
       {/* //? Cast & Crew */}
       <Credits credits={movieCredits} />
 

@@ -258,15 +258,15 @@ form.search {
 }
 .main.show.suggestion {
   pointer-events: auto;
-  animation: showContent 0.2s ease-in-out forwards;
+  animation: showContent 200ms ease-in-out forwards;
 }
 .main.show {
   pointer-events: auto;
-  animation: showContent 1.5s ease-in forwards;
+  animation: showContent 1500ms ease-in-out forwards;
 }
 .main.hide {
   pointer-events: none;
-  animation: hideContent 0.01s ease forwards;
+  animation: hideContent 0.01s ease-out forwards;
 }
 .content-wrapper {
   margin-top: 72px;
@@ -662,7 +662,7 @@ form.search {
   .logo h2 {
     font-size: 16px;
   }
-  .main {
+  .content-wrapper {
     padding: 0 5px;
   }
   .about h2 {
