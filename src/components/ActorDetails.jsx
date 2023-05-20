@@ -19,7 +19,7 @@ const ActorDetails = () => {
   const { data: actorCredits, isFetching: fetchingActorCredits } =
     useGetPersonCreditsQuery(params.id);
   if (fetchingActorData || fetchingActorCredits) return;
-  // console.log(actorData);
+  // console.log(actorCredits);
 
   const actorTopMovies = actorCredits?.cast?.filter(
     movie => movie.popularity > 20
@@ -51,47 +51,49 @@ const ActorDetails = () => {
 
   return (
     <div className={classes.container}>
-      <div className={classes.actor}>
-        <h3>
-          {actorData?.name}
-          <span>({new Date(actorData?.birthday).getFullYear()}-</span>
-          {
+      {/* <div className={classes.actor}> */}
+      <div className={classes.wrapper}>
+        <div className={classes.image}>
+          <img
+            src={
+              actorData?.profile_path
+                ? `${IMG_PATH}/${actorData?.profile_path}`
+                : demoPoster
+            }
+          />
+        </div>
+
+        <div>
+          <h3>
+            {actorData?.name}
             <span>
-              {actorData?.deathday
-                ? new Date(actorData?.deathday).getFullYear()
-                : 'Present'}
-              )
+              <span>({new Date(actorData?.birthday).getFullYear()}-</span>
+              {
+                <span>
+                  {actorData?.deathday
+                    ? new Date(actorData?.deathday).getFullYear()
+                    : 'Present'}
+                  )
+                </span>
+              }
             </span>
-          }
-        </h3>
-        <span className={classes.field}>
-          {fields[actorData?.known_for_department]}
-        </span>
-
-        <div className={classes.wrapper}>
-          <div className={classes.image}>
-            <img
-              src={
-                actorData?.profile_path
-                  ? `${IMG_PATH}/${actorData?.profile_path}`
-                  : demoPoster
-              }
-            />
-          </div>
-
-          <div className={classes.info}>
-            <p className={classes.bio}>{actorData?.biography}</p>
-
-            <button
-              onClick={() =>
-                window.open(`https://www.imdb.com/name/${actorData?.imdb_id}/`)
-              }
-            >
-              IMDB Profile
-            </button>
-          </div>
+          </h3>
+          <span className={classes.field}>
+            {fields[actorData?.known_for_department]}
+          </span>
+          <button
+            onClick={() =>
+              window.open(`https://www.imdb.com/name/${actorData?.imdb_id}/`)
+            }
+          >
+            IMDB Profile
+          </button>
         </div>
       </div>
+      <div className={classes.info}>
+        <p className={classes.bio}>{actorData?.biography}</p>
+      </div>
+      {/* </div> */}
       {moviesDisplays}
       {showsDisplays}
     </div>
