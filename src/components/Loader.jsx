@@ -1,10 +1,10 @@
 import React from 'react';
-import { CircleLoader } from 'react-spinners';
+import { PropagateLoader } from 'react-spinners';
 
 const Loader = () => {
   return (
     <div className="loader">
-      <CircleLoader color="#eb1c24" size={100} />
+      <PropagateLoader color="#eb1c24" size={15} />
     </div>
   );
 };
