@@ -10,14 +10,13 @@ function App() {
       mode: 'dark',
     },
   });
+
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <NavigationBar />
-        <Layout />
-        <Footer />
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={theme}>
+      <NavigationBar />
+      <Layout />
+      <Footer />
+    </ThemeProvider>
   );
 }
 

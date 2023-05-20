@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MovieDetails from './MovieDetails';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Home from './Home';
 import MoviePoster from './MoviePoster';
 import {
@@ -19,6 +19,7 @@ import ShowDetails from './ShowDetails';
 import SeasonDetails from './SeasonDetails';
 import NotFound from './NotFound';
 import ActorDetails from './ActorDetails';
+import TransitionWrapper from './transitionWrapper/TransitionWrapper';
 
 const timeFormatter = minutes => {
   const hours = Math.floor(minutes / 60);
@@ -33,6 +34,10 @@ const Layout = () => {
   const [topRatedTvPage, setTopRatedTvPage] = useState(1);
   const [popularPageTv, setPopularPageTv] = useState(1);
 
+  const { pathname } = useLocation();
+
+  const [showData, setShowData] = useState(false);
+
   const { data: topRatedMovies, isFetching: fetchingTopRated } =
     useGetTopRatedMoviesQuery(topRatedPage);
   const { data: upcomingMovies, isFetching: fetchingUpcoming } =
@@ -44,6 +49,20 @@ const Layout = () => {
   const { data: popularShows, isFetching: fetchingPopularTv } =
     useGetPopularShowsQuery(popularPageTv);
 
+  useEffect(() => {
+    setShowData(false);
+    setTimeout(() => {
+      setShowData(true);
+    }, 250);
+  }, [
+    pathname,
+    fetchingTopRated,
+    fetchingUpcoming,
+    fetchingPopular,
+    fetchingTopRatedTv,
+    fetchingPopularTv,
+  ]);
+
   if (
     fetchingTopRated ||
     fetchingUpcoming ||
@@ -54,93 +73,95 @@ const Layout = () => {
     return <Loader />;
 
   return (
-    <div className="main">
-      <Routes>
-        <Route path="" element={<Home timeFormatter={timeFormatter} />} />
-        <Route
-          path="/movie/:movieId"
-          element={<MovieDetails timeFormatter={timeFormatter} />}
-        />
-        <Route
-          path="/topRatedMovies"
-          element={
-            <MoviePoster
-              title="Top Rated"
-              movies={topRatedMovies}
-              page={topRatedPage}
-              setPage={setTopRatedPage}
-            />
-          }
-        />
-        <Route
-          path="/upcomingMovies"
-          element={
-            <MoviePoster
-              title="Upcoming"
-              movies={upcomingMovies}
-              page={upcomingPage}
-              setPage={setUpcomingPage}
-            />
-          }
-        />
-        <Route
-          path="/popularMovies"
-          element={
-            <MoviePoster
-              title="Popular"
-              movies={popularMovies}
-              page={popularPage}
-              setPage={setPopularPage}
-            />
-          }
-        />
+    <TransitionWrapper inCondition={showData}>
+      <div className="content-wrapper">
+        <Routes>
+          <Route path="" element={<Home timeFormatter={timeFormatter} />} />
+          <Route
+            path="/movie/:movieId"
+            element={<MovieDetails timeFormatter={timeFormatter} />}
+          />
+          <Route
+            path="/topRatedMovies"
+            element={
+              <MoviePoster
+                title="Top Rated"
+                movies={topRatedMovies}
+                page={topRatedPage}
+                setPage={setTopRatedPage}
+              />
+            }
+          />
+          <Route
+            path="/upcomingMovies"
+            element={
+              <MoviePoster
+                title="Upcoming"
+                movies={upcomingMovies}
+                page={upcomingPage}
+                setPage={setUpcomingPage}
+              />
+            }
+          />
+          <Route
+            path="/popularMovies"
+            element={
+              <MoviePoster
+                title="Popular"
+                movies={popularMovies}
+                page={popularPage}
+                setPage={setPopularPage}
+              />
+            }
+          />
 
-        {/* //? TV SHOWS */}
-        <Route
-          path="/topRatedTv"
-          element={
-            <ShowPoster
-              title="Top Rated"
-              shows={topRatedTv}
-              page={topRatedTvPage}
-              setPage={setTopRatedTvPage}
-            />
-          }
-        />
-        <Route
-          path="/popularTv"
-          element={
-            <ShowPoster
-              title="Popular"
-              shows={popularShows}
-              page={popularPageTv}
-              setPage={setPopularPageTv}
-            />
-          }
-        />
+          {/* //? TV SHOWS */}
+          <Route
+            path="/topRatedTv"
+            element={
+              <ShowPoster
+                title="Top Rated"
+                shows={topRatedTv}
+                page={topRatedTvPage}
+                setPage={setTopRatedTvPage}
+              />
+            }
+          />
+          <Route
+            path="/popularTv"
+            element={
+              <ShowPoster
+                title="Popular"
+                shows={popularShows}
+                page={popularPageTv}
+                setPage={setPopularPageTv}
+              />
+            }
+          />
 
-        <Route
-          path="/show/:showId"
-          element={<ShowDetails timeFormatter={timeFormatter} />}
-        />
-        <Route
-          path="/show/:showId"
-          element={<ShowDetails timeFormatter={timeFormatter} />}
-        />
-        <Route
-          path="/show/:showId/:seasonNumber"
-          element={<SeasonDetails timeFormatter={timeFormatter} />}
-        />
-        <Route path="/search/:search" element={<SearchFeed />} />
-        <Route path="/about" element={<About />} />
+          <Route
+            path="/show/:showId"
+            element={<ShowDetails timeFormatter={timeFormatter} />}
+          />
+          <Route
+            path="/show/:showId"
+            element={<ShowDetails timeFormatter={timeFormatter} />}
+          />
+          <Route
+            path="/show/:showId/:seasonNumber"
+            element={<SeasonDetails timeFormatter={timeFormatter} />}
+          />
+          <Route path="/search/:search" element={<SearchFeed />} />
+          <Route path="/about" element={<About />} />
 
-        <Route path="/person/:id" element={<ActorDetails />} />
+          <Route path="/person/:id" element={<ActorDetails />} />
 
-        {/* <Route path="*" element={<Navigate replace to="" />} /> */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <ScrollToTopArrow />
-    </div>
+          {/* <Route path="*" element={<Navigate replace to="" />} /> */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <ScrollToTopArrow />
+      </div>
+    </TransitionWrapper>
   );
 };
 

@@ -25,18 +25,14 @@ const SeasonDetails = ({ timeFormatter }) => {
     seasonNumber,
   });
 
-  // if (fetchingShow || isFetching) return <Loader />;
-  // console.log(singleShow, seasonDetails);
-  // console.log(singleShow?.number_of_seasons);
-  // console.log(...seasonDetails?.episodes);
+  if (fetchingShow || isFetching) return <Loader />;
 
   const handleSelect = e => {
-    // console.log(e.target.value);
     navigate(`/show/${showId}/${+e.target.value}`);
   };
+
   let seasonsTotal = [];
   let selectMenu;
-
   if (!fetchingShow) {
     seasonsTotal = new Array(singleShow?.number_of_seasons).fill(1);
     selectMenu = seasonsTotal.length > 0 && (
@@ -60,17 +56,6 @@ const SeasonDetails = ({ timeFormatter }) => {
           </MenuItem>
         ))}
       </TextField>
-      // <select
-      //   value={seasonNumber}
-      //   onChange={handleSelect}
-      //   className={classes.selectMenu}
-      // >
-      //   {seasonsTotal?.map((_, i) => (
-      //     <option key={i} value={i + 1}>
-      //       {i + 1}
-      //     </option>
-      //   ))}
-      // </select>
     );
   }
 
@@ -79,6 +64,8 @@ const SeasonDetails = ({ timeFormatter }) => {
     month: 'short',
     day: 'numeric',
   };
+
+  // console.log(singleShow, seasonDetails);
 
   const dateFormatter = date => {
     return new Intl.DateTimeFormat('en-US', options).format(new Date(date));

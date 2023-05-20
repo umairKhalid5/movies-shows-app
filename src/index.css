@@ -254,6 +254,17 @@ form.search {
 
 /* //? .main */
 .main {
+  opacity: 0;
+}
+.main.show {
+  pointer-events: auto;
+  animation: showContent 1.5s ease-in forwards;
+}
+.main.hide {
+  pointer-events: none;
+  animation: hideContent 0.1s ease forwards;
+}
+.content-wrapper {
   margin-top: 72px;
   display: flex;
   align-items: center;
@@ -474,6 +485,24 @@ form.search {
   100% {
     transform: translate(0px, -60%);
     opacity: 0.5;
+  }
+}
+
+@keyframes showContent {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes hideContent {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 

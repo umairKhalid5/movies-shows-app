@@ -17,8 +17,9 @@ const MoviePoster = ({
   page,
   search,
 }) => {
-  const [isLoading, setIsLoading] = useState(true);
   window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
