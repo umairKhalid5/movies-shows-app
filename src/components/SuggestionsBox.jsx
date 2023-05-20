@@ -51,7 +51,7 @@ const SuggestionsBox = ({
   };
 
   return (
-    <TransitionWrapper inCondition={showData}>
+    <TransitionWrapper inCondition={showData} eTime={200}>
       <div className="search-drop-down">
         <ul>
           {searchResults?.results.length < 1 && <li>No Matches Available</li>}

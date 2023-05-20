@@ -256,13 +256,17 @@ form.search {
 .main {
   opacity: 0;
 }
+.main.show.suggestion {
+  pointer-events: auto;
+  animation: showContent 0.2s ease-in-out forwards;
+}
 .main.show {
   pointer-events: auto;
   animation: showContent 1.5s ease-in forwards;
 }
 .main.hide {
   pointer-events: none;
-  animation: hideContent 0.1s ease forwards;
+  animation: hideContent 0.01s ease forwards;
 }
 .content-wrapper {
   margin-top: 72px;
