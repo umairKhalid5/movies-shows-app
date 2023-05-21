@@ -92,7 +92,7 @@ const MoviePoster = ({
             Prev
           </button>
           <button
-            disabled={page > 5 || movies.total_pages < page + 1}
+            disabled={page > 9 || movies.total_pages < page + 1}
             onClick={() => handlePagination('next')}
           >
             Next

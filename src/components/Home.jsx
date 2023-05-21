@@ -9,6 +9,7 @@ import {
   useGetUpcomingMoviesQuery,
 } from '../services/getMoviesApi';
 import ShowPoster from './ShowPoster';
+import Loader from './Loader';
 
 const Home = ({ timeFormatter }) => {
   const { data: topRated, isFetching: fetchingTopRated } =
@@ -22,7 +23,14 @@ const Home = ({ timeFormatter }) => {
   const { data: popularShows, isFetching: fetchingPopularTv } =
     useGetPopularShowsQuery(1);
 
-  if (fetchingTopRated || fetchingUpcoming || fetchingPopular) return;
+  if (
+    fetchingTopRated ||
+    fetchingUpcoming ||
+    fetchingPopular ||
+    fetchingTopRatedTv ||
+    fetchingPopularTv
+  )
+    return;
   return (
     <div
       style={{

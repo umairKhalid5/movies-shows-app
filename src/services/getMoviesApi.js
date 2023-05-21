@@ -35,7 +35,8 @@ export const moviesApi = createApi({
         `movie/upcoming?api_key=${key}&language=en-US&page=${page}`,
     }),
     getTopRatedTvShows: builder.query({
-      query: page => `tv/top_rated?api_key=${key}&language=en-US&page=${page}`,
+      query: page =>
+        `tv/top_rated?api_key=${key}&language=en-US&page=${page}&without_genres=16`,
     }),
     getShow: builder.query({
       query: id => `tv/${id}?api_key=${key}&language=en-US`,
@@ -51,7 +52,7 @@ export const moviesApi = createApi({
     }),
     getPopularShows: builder.query({
       query: page =>
-        `discover/tv?sort_by=popularity.desc&api_key=${key}&page=${page}&with_original_language=en`,
+        `discover/tv?sort_by=popularity.desc&api_key=${key}&page=${page}&with_original_language=en&without_genres=16`,
     }),
     getSearchVideos: builder.query({
       query: data =>
