@@ -51,7 +51,6 @@ const ActorDetails = () => {
 
   return (
     <div className={classes.container}>
-      {/* <div className={classes.actor}> */}
       <div className={classes.wrapper}>
         <div className={classes.image}>
           <img
@@ -93,7 +92,6 @@ const ActorDetails = () => {
       <div className={classes.info}>
         <p className={classes.bio}>{actorData?.biography}</p>
       </div>
-      {/* </div> */}
       {moviesDisplays}
       {showsDisplays}
     </div>
