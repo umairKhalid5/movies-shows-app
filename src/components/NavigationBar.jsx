@@ -147,7 +147,7 @@ const NavigationBar = () => {
     else setShowSuggestions(false);
   };
 
-  //* Wait 500ms before sending search request to backend upon typing
+  //* Wait 400ms before sending search request to backend upon typing
   useEffect(() => {
     const timer = setTimeout(() => {
       if (showSuggestions) setShowResults(true);
@@ -187,11 +187,7 @@ const NavigationBar = () => {
   );
 
   const MainNav = (
-    <ul
-      // className={!openMenu ? 'desk-nav-list' : 'desk-nav-list show'}
-      className="desk-nav-list"
-      ref={subMenuRef}
-    >
+    <ul className="desk-nav-list" ref={subMenuRef}>
       <li>
         <NavLink
           to=""
@@ -213,7 +209,6 @@ const NavigationBar = () => {
       </li>
 
       {navItems.map(item => (
-        // <li className="subMenu selected" key={item.text}>
         <li
           className={`${
             pathname.toLocaleLowerCase().includes(item.short)

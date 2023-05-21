@@ -23,7 +23,7 @@ const SuggestionsBox = ({
   useEffect(() => {
     setShowData(false);
     setTimeout(() => {
-      setShowData(true);
+      if (!isFetching) setShowData(true);
     }, 250);
   }, [isFetching]);
 
