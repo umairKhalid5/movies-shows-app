@@ -20,6 +20,7 @@ import SeasonDetails from './SeasonDetails';
 import NotFound from './NotFound';
 import ActorDetails from './ActorDetails';
 import TransitionWrapper from './transitionWrapper/TransitionWrapper';
+import Credits from './Credits';
 
 const timeFormatter = minutes => {
   const hours = Math.floor(minutes / 60);
@@ -155,6 +156,8 @@ const Layout = () => {
           <Route path="/about" element={<About />} />
 
           <Route path="/person/:id" element={<ActorDetails />} />
+
+          <Route path="/movie/:movieId/credits" element={<Credits />} />
 
           {/* <Route path="*" element={<Navigate replace to="" />} /> */}
           <Route path="*" element={<NotFound />} />

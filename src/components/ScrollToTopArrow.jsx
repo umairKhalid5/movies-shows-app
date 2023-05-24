@@ -8,7 +8,7 @@ const ScrollToTopArrow = () => {
       style={{
         position: 'absolute',
         right: '25px',
-        bottom: '40px',
+        bottom: '10px',
         zIndex: 50,
         color: ' #fff',
       }}

@@ -638,8 +638,8 @@ form.search {
     width: 70px;
   }
   .scrollTopContainer {
-    right: 15px !important;
-    bottom: 110px !important;
+    right: 10px !important;
+    bottom: 25px !important;
   }
   .scrollTopBtn {
     height: 35px !important;

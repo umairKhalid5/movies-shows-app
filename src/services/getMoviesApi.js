@@ -12,7 +12,8 @@ export const moviesApi = createApi({
         `discover/movie?sort_by=popularity.desc&api_key=${key}&page=${page}`,
     }),
     getMovie: builder.query({
-      query: id => `movie/${id}?api_key=${key}&language=en-US`,
+      query: id =>
+        `movie/${id}?api_key=${key}&language=en-US&append_to_response=credits`,
     }),
     getMovieVideos: builder.query({
       query: id => `movie/${id}/videos?api_key=${key}&language=en-US`,

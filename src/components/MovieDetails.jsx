@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
-  useGetMovieCreditsQuery,
   useGetMovieQuery,
   useGetMovieVideosQuery,
   useGetSimilarMoviesQuery,
@@ -31,9 +30,6 @@ const MovieDetails = ({ timeFormatter }) => {
 
   const trailerRef = useRef();
 
-  const { data: movieCredits, isFetching: fetchingCast } =
-    useGetMovieCreditsQuery(params.movieId);
-
   const { data: videos, isFetching: fetchingVideos } = useGetMovieVideosQuery(
     params.movieId
   );
@@ -48,10 +44,7 @@ const MovieDetails = ({ timeFormatter }) => {
       });
   }, [trailer]);
 
-  if (fetchingMovie || fetchingVideos || fetchingCast || fetchingSimilar)
-    return <Loader />;
-
-  // console.log('videos', videos);
+  if (fetchingMovie || fetchingVideos || fetchingSimilar) return <Loader />;
 
   const tagline = singleMovie?.tagline;
   const taglineToUse =
@@ -64,11 +57,9 @@ const MovieDetails = ({ timeFormatter }) => {
     video.name.includes('Trailer')
   );
 
-  // console.log('movieCredits', movieCredits);
-  const director = movieCredits?.crew?.filter(
+  const director = singleMovie?.credits?.crew?.filter(
     role => role.department === 'Directing' && role.job === 'Director'
   )[0]?.name;
-  // console.log(director);
 
   const videoIsAvailable = !!(
     movieTrailer1[0]?.key ||
@@ -226,7 +217,7 @@ const MovieDetails = ({ timeFormatter }) => {
         </CSSTransition>
       )}
       {/* //? Cast & Crew */}
-      <Credits credits={movieCredits} />
+      <Credits short title={singleMovie?.title} />
 
       {/* //? Similar Movies */}
       <SimilarMovies videos={similarMovies} category="Movies" />
