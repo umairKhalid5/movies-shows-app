@@ -52,9 +52,7 @@ const Layout = () => {
 
   useEffect(() => {
     setShowData(false);
-    setTimeout(() => {
-      setShowData(true);
-    }, 250);
+    setTimeout(() => setShowData(true), 250);
   }, [
     pathname,
     fetchingTopRated,

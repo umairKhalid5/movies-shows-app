@@ -18,7 +18,7 @@ const TransitionWrapper = ({ inCondition, children, eTime }) => {
         exitActive: 'main hide',
       }}
     >
-      <>{children}</>
+      {children}
     </CSSTransition>
   );
 };

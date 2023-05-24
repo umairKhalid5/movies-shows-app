@@ -217,7 +217,7 @@ const MovieDetails = ({ timeFormatter }) => {
         </CSSTransition>
       )}
       {/* //? Cast & Crew */}
-      <Credits short title={singleMovie?.title} />
+      <Credits short />
 
       {/* //? Similar Movies */}
       <SimilarMovies videos={similarMovies} category="Movies" />

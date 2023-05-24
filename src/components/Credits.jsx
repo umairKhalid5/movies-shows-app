@@ -21,7 +21,7 @@ const Credits = ({ short, show }) => {
   const { data: showCredits, isFetching: fetchingShowCast } =
     useGetShowCreditsQuery(params?.showId ?? skipToken);
 
-  if (fetchingMovieCast || fetchingShowCast) return <Loader />;
+  if (fetchingMovieCast && fetchingShowCast) return <Loader />;
 
   const creditsToUse = short
     ? show

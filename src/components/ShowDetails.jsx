@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
-  useGetShowCreditsQuery,
   useGetShowQuery,
   useGetShowVideosQuery,
   useGetSimilarShowsQuery,
@@ -29,9 +28,6 @@ const ShowDetails = ({ timeFormatter }) => {
   const { data: singleShow, isFetching: fetchingShow } = useGetShowQuery(
     params.showId
   );
-
-  // const { data: showCredits, isFetching: fetchingCast } =
-  //   useGetShowCreditsQuery(params.showId);
 
   const { data: similarShows, isFetching: fetchingSimilar } =
     useGetSimilarShowsQuery(params.showId);
