@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import demoPoster from '../assets/demoPoster.jpg';
 import { useEffect } from 'react';
 import Loader from './Loader';
+import { motion } from 'framer-motion';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/original';
 
@@ -42,7 +43,13 @@ const ShowPoster = ({
   };
 
   return (
-    <div className={classes.posters}>
+    <motion.div
+      className={classes.posters}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
       {!similar && !search && title && (
         <h2>
           <span style={{ color: '#eb1c24' }}>{title}</span> Shows:
@@ -99,7 +106,7 @@ const ShowPoster = ({
           </button>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

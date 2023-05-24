@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import MovieDetails from './MovieDetails';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Home from './Home';
@@ -19,8 +19,8 @@ import ShowDetails from './ShowDetails';
 import SeasonDetails from './SeasonDetails';
 import NotFound from './NotFound';
 import ActorDetails from './ActorDetails';
-import TransitionWrapper from './transitionWrapper/TransitionWrapper';
 import Credits from './Credits';
+import { AnimatePresence } from 'framer-motion';
 
 const timeFormatter = minutes => {
   const hours = Math.floor(minutes / 60);
@@ -35,9 +35,7 @@ const Layout = () => {
   const [topRatedTvPage, setTopRatedTvPage] = useState(1);
   const [popularPageTv, setPopularPageTv] = useState(1);
 
-  const { pathname } = useLocation();
-
-  const [showData, setShowData] = useState(false);
+  const location = useLocation();
 
   const { data: topRatedMovies, isFetching: fetchingTopRated } =
     useGetTopRatedMoviesQuery(topRatedPage);
@@ -50,18 +48,6 @@ const Layout = () => {
   const { data: popularShows, isFetching: fetchingPopularTv } =
     useGetPopularShowsQuery(popularPageTv);
 
-  useEffect(() => {
-    setShowData(false);
-    setTimeout(() => setShowData(true), 250);
-  }, [
-    pathname,
-    fetchingTopRated,
-    fetchingUpcoming,
-    fetchingPopular,
-    fetchingTopRatedTv,
-    fetchingPopularTv,
-  ]);
-
   if (
     fetchingTopRated ||
     fetchingUpcoming ||
@@ -72,10 +58,10 @@ const Layout = () => {
     return <Loader />;
 
   return (
-    <TransitionWrapper inCondition={showData}>
+    <AnimatePresence>
       <div className="content-wrapper">
-        <Routes>
-          <Route path="" element={<Home timeFormatter={timeFormatter} />} />
+        <Routes location={location} key={location.pathname}>
+          <Route path="" element={<Home />} />
           <Route
             path="/movie/:movieId"
             element={<MovieDetails timeFormatter={timeFormatter} />}
@@ -158,12 +144,11 @@ const Layout = () => {
           <Route path="/movie/:movieId/credits" element={<Credits />} />
           <Route path="/show/:showId/credits" element={<Credits />} />
 
-          {/* <Route path="*" element={<Navigate replace to="" />} /> */}
           <Route path="*" element={<NotFound />} />
         </Routes>
         <ScrollToTopArrow />
       </div>
-    </TransitionWrapper>
+    </AnimatePresence>
   );
 };
 

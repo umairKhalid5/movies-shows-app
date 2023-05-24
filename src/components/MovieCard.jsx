@@ -6,7 +6,7 @@ import demoBackdrop from '../assets/demoBackdrop.jpg';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 
-const MovieCard = ({ movie, details, timeFormatter }) => {
+const MovieCard = ({ movie, details }) => {
   const genres = movie?.genres?.map(movie => movie?.name).join(', ');
 
   const genreBoxClasses = details

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const NotFound = () => {
   const [time, setTime] = useState(5);
@@ -23,7 +24,13 @@ const NotFound = () => {
   }, []);
 
   return (
-    <div className="notFound">
+    <motion.div
+      className="notFound"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
       <h2>Oops! Page not Found</h2>
       <p>
         Go to <Link to="">Home</Link>
@@ -31,7 +38,7 @@ const NotFound = () => {
       <p>
         Navigating to <Link to="">Home</Link> in {time}s
       </p>
-    </div>
+    </motion.div>
   );
 };
 

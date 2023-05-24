@@ -1,14 +1,19 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const About = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
   return (
-    <div
+    <motion.div
       style={{
         display: 'flex',
         flexDirection: 'column',
       }}
       className="about"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
     >
       <h2>About Us</h2>
       <p
@@ -31,7 +36,7 @@ const About = () => {
         sapiente quis, consectetur error id soluta culpa et ratione accusantium,
         expedita quae officia magnam esse sunt facilis!
       </p>
-    </div>
+    </motion.div>
   );
 };
 

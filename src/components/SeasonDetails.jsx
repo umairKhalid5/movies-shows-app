@@ -7,6 +7,7 @@ import StarIcon from '@mui/icons-material/Star';
 import Loader from './Loader';
 import ShowMiniPosters from './ShowMiniPosters';
 import { MenuItem, TextField } from '@mui/material';
+import { motion } from 'framer-motion';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 
@@ -72,7 +73,13 @@ const SeasonDetails = ({ timeFormatter }) => {
   };
 
   return (
-    <div className={classes.container}>
+    <motion.div
+      className={classes.container}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
       {fetchingShow ? (
         <Loader />
       ) : (
@@ -155,7 +162,7 @@ const SeasonDetails = ({ timeFormatter }) => {
       ) : (
         <ShowMiniPosters seasons={singleShow?.seasons} id={singleShow?.id} />
       )}
-    </div>
+    </motion.div>
   );
 };
 

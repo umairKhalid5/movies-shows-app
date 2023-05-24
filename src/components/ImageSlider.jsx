@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import MovieCard from './MovieCard';
 
-const ImageSlider = ({ timeFormatter, popularMovies }) => {
+const ImageSlider = ({ popularMovies }) => {
   const [winSize, setWinSize] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -37,11 +37,7 @@ const ImageSlider = ({ timeFormatter, popularMovies }) => {
       <div className={classes.sliderContainer}>
         <Slider {...settings} className={classes.sliderComponent}>
           {popularMovies?.results?.slice(0, 15).map(movie => (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
-              timeFormatter={timeFormatter}
-            />
+            <MovieCard key={movie.id} movie={movie} />
           ))}
         </Slider>
       </div>

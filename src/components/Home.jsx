@@ -9,9 +9,10 @@ import {
   useGetUpcomingMoviesQuery,
 } from '../services/getMoviesApi';
 import ShowPoster from './ShowPoster';
-import Loader from './Loader';
+import { motion } from 'framer-motion';
+// import Loader from './Loader';
 
-const Home = ({ timeFormatter }) => {
+const Home = () => {
   const { data: topRated, isFetching: fetchingTopRated } =
     useGetTopRatedMoviesQuery(1);
   const { data: upcoming, isFetching: fetchingUpcoming } =
@@ -32,14 +33,18 @@ const Home = ({ timeFormatter }) => {
   )
     return;
   return (
-    <div
+    <motion.div
       style={{
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
       }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
     >
-      <ImageSlider timeFormatter={timeFormatter} popularMovies={popular} />
+      <ImageSlider popularMovies={popular} />
 
       <MoviePoster
         home
@@ -69,7 +74,7 @@ const Home = ({ timeFormatter }) => {
       />
 
       <ShowPoster home title="Popular" shows={popularShows} path="/popularTv" />
-    </div>
+    </motion.div>
   );
 };
 

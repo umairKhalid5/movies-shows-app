@@ -9,11 +9,14 @@ import {
 } from '../services/getMoviesApi';
 import Loader from './Loader';
 import { skipToken } from '@reduxjs/toolkit/dist/query';
+import { motion } from 'framer-motion';
 
 const Credits = ({ short, show }) => {
   const navigate = useNavigate();
 
   const params = useParams();
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 
   const { data: movieCredits, isFetching: fetchingMovieCast } =
     useGetMovieCreditsQuery(params?.movieId ?? skipToken);
@@ -38,32 +41,36 @@ const Credits = ({ short, show }) => {
     : `${classes.creditsContainer} ${classes.full}`;
 
   return (
-    <>
-      <div className={classesToUse}>
-        <h2>Cast:</h2>
-        <ul>
-          {creditsToUse?.map(member => (
-            <li key={member?.id} onClick={() => handleClick(member?.id)}>
-              <img
-                src={
-                  member?.profile_path
-                    ? `${IMG_PATH}${member?.profile_path}`
-                    : demoProfilePic
-                }
-              />
-              {member?.name}
-            </li>
-          ))}
-          {short && (
-            <li className={classes.moreBtn}>
-              <Link to={`credits`} className={classes.creditsBtn}>
-                See More
-              </Link>
-            </li>
-          )}
-        </ul>
-      </div>
-    </>
+    <motion.div
+      className={classesToUse}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <h2>Cast:</h2>
+      <ul>
+        {creditsToUse?.map(member => (
+          <li key={member?.id} onClick={() => handleClick(member?.id)}>
+            <img
+              src={
+                member?.profile_path
+                  ? `${IMG_PATH}${member?.profile_path}`
+                  : demoProfilePic
+              }
+            />
+            {member?.name}
+          </li>
+        ))}
+        {short && (
+          <li className={classes.moreBtn}>
+            <Link to={`credits`} className={classes.creditsBtn}>
+              See More
+            </Link>
+          </li>
+        )}
+      </ul>
+    </motion.div>
   );
 };
 

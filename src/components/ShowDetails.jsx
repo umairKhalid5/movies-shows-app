@@ -17,6 +17,7 @@ import demoPoster from '../assets/demoPoster.jpg';
 import Loader from './Loader';
 import ShowMiniPosters from './ShowMiniPosters';
 import { CSSTransition } from 'react-transition-group';
+import { motion } from 'framer-motion';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 
@@ -77,7 +78,13 @@ const ShowDetails = ({ timeFormatter }) => {
   const totalEpisodes = singleShow?.number_of_episodes || 'Not yet Released';
 
   return (
-    <div className={classes.mainContainer}>
+    <motion.div
+      className={classes.mainContainer}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
       <div className={classes.imageContainer}>
         {/* //? Backdrop */}
         <div className={classes.backdrop}>
@@ -208,7 +215,7 @@ const ShowDetails = ({ timeFormatter }) => {
 
       {/* //? Similar Movies */}
       <SimilarMovies videos={similarShows} category="Shows" />
-    </div>
+    </motion.div>
   );
 };
 

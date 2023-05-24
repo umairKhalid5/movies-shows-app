@@ -10,6 +10,7 @@ const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 import demoPoster from '../assets/demoPoster.jpg';
 import ShowPoster from './ShowPoster';
 import MoviePoster from './MoviePoster';
+import { motion } from 'framer-motion';
 
 const ActorDetails = () => {
   const params = useParams();
@@ -50,7 +51,13 @@ const ActorDetails = () => {
   );
 
   return (
-    <div className={classes.container}>
+    <motion.div
+      className={classes.container}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
       <div className={classes.wrapper}>
         <div className={classes.image}>
           <img
@@ -94,7 +101,7 @@ const ActorDetails = () => {
       </div>
       {moviesDisplays}
       {showsDisplays}
-    </div>
+    </motion.div>
   );
 };
 

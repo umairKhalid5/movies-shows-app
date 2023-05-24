@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import demoPoster from '../assets/demoPoster.jpg';
 import { useEffect } from 'react';
 import Loader from './Loader';
+import { motion } from 'framer-motion';
 
 const MoviePoster = ({
   home,
@@ -44,7 +45,13 @@ const MoviePoster = ({
   };
 
   return (
-    <div className={classes.posters}>
+    <motion.div
+      className={classes.posters}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
       {!similar && !search && (
         <h2>
           <span style={{ color: '#eb1c24' }}>{title}</span> Movies:
@@ -99,7 +106,7 @@ const MoviePoster = ({
           </button>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 
