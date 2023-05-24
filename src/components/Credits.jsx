@@ -3,21 +3,32 @@ import classes from './Credits.module.css';
 const IMG_PATH = 'https://image.tmdb.org/t/p/original';
 import demoProfilePic from '../assets/profilePic.png';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useGetMovieCreditsQuery } from '../services/getMoviesApi';
+import {
+  useGetMovieCreditsQuery,
+  useGetShowCreditsQuery,
+} from '../services/getMoviesApi';
 import Loader from './Loader';
+import { skipToken } from '@reduxjs/toolkit/dist/query';
 
-const Credits = ({ short }) => {
+const Credits = ({ short, show }) => {
   const navigate = useNavigate();
 
   const params = useParams();
 
-  const { data: movieCredits, isFetching: fetchingCast } =
-    useGetMovieCreditsQuery(params.movieId);
+  const { data: movieCredits, isFetching: fetchingMovieCast } =
+    useGetMovieCreditsQuery(params?.movieId ?? skipToken);
 
-  if (fetchingCast) return <Loader />;
+  const { data: showCredits, isFetching: fetchingShowCast } =
+    useGetShowCreditsQuery(params?.showId ?? skipToken);
+
+  if (fetchingMovieCast || fetchingShowCast) return <Loader />;
 
   const creditsToUse = short
-    ? movieCredits?.cast?.slice(0, 5)
+    ? show
+      ? showCredits?.cast?.slice(0, 5)
+      : movieCredits?.cast?.slice(0, 5)
+    : params?.showId
+    ? showCredits?.cast
     : movieCredits?.cast;
 
   const handleClick = id => navigate(`/person/${id}`);

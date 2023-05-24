@@ -158,6 +158,7 @@ const Layout = () => {
           <Route path="/person/:id" element={<ActorDetails />} />
 
           <Route path="/movie/:movieId/credits" element={<Credits />} />
+          <Route path="/show/:showId/credits" element={<Credits />} />
 
           {/* <Route path="*" element={<Navigate replace to="" />} /> */}
           <Route path="*" element={<NotFound />} />

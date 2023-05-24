@@ -21,19 +21,6 @@ import { CSSTransition } from 'react-transition-group';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 
-const options = {
-  year: 'numeric',
-  month: 'short',
-  day: 'numeric',
-};
-
-// const dateFormatter = date => {
-//   const formattedDate = new Intl.DateTimeFormat('en-US', options).format(
-//     new Date(date)
-//   );
-//   return formattedDate;
-// };
-
 const ShowDetails = ({ timeFormatter }) => {
   const [trailer, setTrailer] = useState(false);
   const trailerRef = useRef();
@@ -43,8 +30,8 @@ const ShowDetails = ({ timeFormatter }) => {
     params.showId
   );
 
-  const { data: showCredits, isFetching: fetchingCast } =
-    useGetShowCreditsQuery(params.showId);
+  // const { data: showCredits, isFetching: fetchingCast } =
+  //   useGetShowCreditsQuery(params.showId);
 
   const { data: similarShows, isFetching: fetchingSimilar } =
     useGetSimilarShowsQuery(params.showId);
@@ -60,8 +47,7 @@ const ShowDetails = ({ timeFormatter }) => {
       });
   }, [trailer]);
 
-  if (fetchingShow || fetchingCast || fetchingSimilar || fetchingVideos)
-    return <Loader />;
+  if (fetchingShow || fetchingSimilar || fetchingVideos) return <Loader />;
 
   // console.log(singleShow);
 
@@ -222,7 +208,7 @@ const ShowDetails = ({ timeFormatter }) => {
       <ShowMiniPosters seasons={singleShow?.seasons} id={singleShow?.id} />
 
       {/* //? Cast & Crew */}
-      <Credits credits={showCredits} />
+      <Credits show short />
 
       {/* //? Similar Movies */}
       <SimilarMovies videos={similarShows} category="Shows" />
