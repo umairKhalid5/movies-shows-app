@@ -8,8 +8,8 @@ const TransitionWrapper = ({ inCondition, children, eTime }) => {
       mountOnEnter
       unmountOnExit
       timeout={{
-        enter: eTime ? eTime : 1500,
-        exit: 10,
+        enter: eTime ? eTime : 1200,
+        exit: 1,
       }}
       classNames={{
         enter: '',

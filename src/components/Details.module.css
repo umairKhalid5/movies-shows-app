@@ -23,6 +23,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   box-shadow: 0px 0px 15px rgba(238, 238, 238, 0.15);
+  width: 100%;
 }
 .imageContainer::before {
   content: '';
@@ -335,7 +336,7 @@
     font-weight: 500;
   }
   .imageContainer {
-    max-width: 100%;
+    width: auto;
   }
   .imageContainer::before {
     display: none;

@@ -266,7 +266,7 @@ form.search {
 }
 .main.hide {
   pointer-events: none;
-  animation: hideContent 0.01s ease-out forwards;
+  animation: hideContent 1ms ease forwards;
 }
 .content-wrapper {
   margin-top: 72px;
