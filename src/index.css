@@ -262,7 +262,7 @@ form.search {
 }
 .main.show {
   pointer-events: auto;
-  animation: showContent 1500ms ease-in forwards;
+  animation: showContent 1200ms ease-in forwards;
 }
 .main.hide {
   pointer-events: none;
