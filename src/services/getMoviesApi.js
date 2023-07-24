@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// const key = '8d1bb757e88e9795281c3db78882b9b0';
 const key = import.meta.env.VITE_MOVIE_API_KEY;
 
 export const moviesApi = createApi({
