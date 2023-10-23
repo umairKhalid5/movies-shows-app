@@ -5,6 +5,7 @@ const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 import demoPoster from '../assets/demoPoster.jpg';
 import { useNavigate } from 'react-router-dom';
 import TransitionWrapper from './transitionWrapper/TransitionWrapper';
+import Image from './UI/Image.jsx';
 
 const SuggestionsBox = ({
   searchTerm,
@@ -63,7 +64,7 @@ const SuggestionsBox = ({
                   handleSuggestionClick(video.media_type, video.id)
                 }
               >
-                <img
+                {/* <img
                   src={
                     video?.poster_path
                       ? `${IMG_PATH}/${video?.poster_path}`
@@ -73,6 +74,16 @@ const SuggestionsBox = ({
                   }
                   alt={video?.name || video?.title}
                   loading="lazy"
+                /> */}
+                <Image
+                  src={
+                    video?.poster_path
+                      ? `${IMG_PATH}/${video?.poster_path}`
+                      : video?.media_type === 'person' && video?.profile_path
+                      ? `${IMG_PATH}/${video?.profile_path}`
+                      : demoPoster
+                  }
+                  alt={video?.name || video?.title}
                 />
                 <p>
                   {video?.name || video?.title} (

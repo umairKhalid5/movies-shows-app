@@ -11,6 +11,7 @@ import demoPoster from '../assets/demoPoster.jpg';
 import ShowPoster from './ShowPoster';
 import MoviePoster from './MoviePoster';
 import { motion } from 'framer-motion';
+import Image from './UI/Image.jsx';
 
 const ActorDetails = () => {
   const params = useParams();
@@ -60,12 +61,20 @@ const ActorDetails = () => {
     >
       <div className={classes.wrapper}>
         <div className={classes.image}>
-          <img
+          {/* <img
             src={
               actorData?.profile_path
                 ? `${IMG_PATH}/${actorData?.profile_path}`
                 : demoPoster
             }
+          /> */}
+          <Image
+            src={
+              actorData?.profile_path
+                ? `${IMG_PATH}/${actorData?.profile_path}`
+                : demoPoster
+            }
+            alt={actorData?.name}
           />
         </div>
 

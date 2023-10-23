@@ -3,6 +3,7 @@ import classes from './MovieCard.module.css';
 import StarIcon from '@mui/icons-material/Star';
 import { Link } from 'react-router-dom';
 import demoBackdrop from '../assets/demoBackdrop.jpg';
+import Image from './UI/Image.jsx';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 
@@ -16,7 +17,7 @@ const MovieCard = ({ movie, details }) => {
   return (
     <div className={classes.card}>
       <div className={classes['card-top']}>
-        <img
+        {/* <img
           src={
             movie?.backdrop_path
               ? `${IMG_PATH}/${movie?.backdrop_path}`
@@ -24,6 +25,14 @@ const MovieCard = ({ movie, details }) => {
           }
           alt={movie.name}
           loading="lazy"
+        /> */}
+        <Image
+          src={
+            movie?.backdrop_path
+              ? `${IMG_PATH}/${movie?.backdrop_path}`
+              : demoBackdrop
+          }
+          alt={movie.name}
         />
       </div>
       <div className={classes['card-bottom']}>

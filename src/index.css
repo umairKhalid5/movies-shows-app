@@ -211,6 +211,9 @@ form.search {
 .search-drop-down li:hover {
   background-color: hsl(266, 13%, 15%);
 }
+.search-drop-down li > span:first-of-type {
+  display: inline-flex !important;
+}
 .search-drop-down li img {
   width: 40px;
   max-width: 40px;
@@ -274,6 +277,8 @@ form.search {
   align-items: center;
   justify-content: center;
   padding: 0 20px;
+  max-width: 1650px;
+  margin-inline: auto;
 }
 
 /* //? REACT PLAYER */

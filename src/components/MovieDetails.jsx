@@ -18,6 +18,7 @@ import demoPoster from '../assets/demoPoster.jpg';
 import Loader from './Loader';
 import { CSSTransition } from 'react-transition-group';
 import { motion } from 'framer-motion';
+import Image from './UI/Image.jsx';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 
@@ -107,7 +108,7 @@ const MovieDetails = ({ timeFormatter }) => {
       <div className={classes.imageContainer}>
         {/* //? Backdrop */}
         <div className={classes.backdrop}>
-          <img
+          {/* <img
             src={
               singleMovie?.backdrop_path
                 ? `${IMG_PATH}/${singleMovie?.backdrop_path}`
@@ -115,12 +116,20 @@ const MovieDetails = ({ timeFormatter }) => {
             }
             alt={singleMovie?.title}
             loading="lazy"
+          /> */}
+          <Image
+            src={
+              singleMovie?.backdrop_path
+                ? `${IMG_PATH}/${singleMovie?.backdrop_path}`
+                : demoBackdrop
+            }
+            alt={singleMovie?.title}
           />
         </div>
 
         {/* //? Poster */}
         <div className={classes?.posterContainer}>
-          <img
+          {/* <img
             src={
               singleMovie?.poster_path
                 ? `${IMG_PATH}/${singleMovie?.poster_path}`
@@ -128,6 +137,14 @@ const MovieDetails = ({ timeFormatter }) => {
             }
             alt={singleMovie?.original_title}
             loading="lazy"
+          /> */}
+          <Image
+            src={
+              singleMovie?.poster_path
+                ? `${IMG_PATH}/${singleMovie?.poster_path}`
+                : demoPoster
+            }
+            alt={singleMovie?.original_title}
           />
         </div>
 

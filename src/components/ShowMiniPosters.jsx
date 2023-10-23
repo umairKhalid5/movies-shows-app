@@ -3,6 +3,7 @@ import classes from './Poster.module.css';
 const IMG_PATH = 'https://image.tmdb.org/t/p/original';
 import { Link, useParams } from 'react-router-dom';
 import demoPoster from '../assets/demoPoster.jpg';
+import Image from './UI/Image.jsx';
 
 const ShowMiniPosters = ({ seasons, id }) => {
   if (!seasons || seasons?.length < 1) return <p>No seasons available</p>;
@@ -29,7 +30,15 @@ const ShowMiniPosters = ({ seasons, id }) => {
                 : selectedClasses
             }
           >
-            <img
+            <Image
+              src={
+                season?.poster_path
+                  ? `${IMG_PATH}/${season?.poster_path}`
+                  : demoPoster
+              }
+              alt={season?.name}
+            />
+            {/* <img
               src={
                 season?.poster_path
                   ? `${IMG_PATH}/${season?.poster_path}`
@@ -37,7 +46,7 @@ const ShowMiniPosters = ({ seasons, id }) => {
               }
               alt={season?.name}
               loading="lazy"
-            ></img>
+            /> */}
             <h4>
               {season?.name} ({season?.episode_count} Episodes)
             </h4>

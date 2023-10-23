@@ -18,6 +18,7 @@ import Loader from './Loader';
 import ShowMiniPosters from './ShowMiniPosters';
 import { CSSTransition } from 'react-transition-group';
 import { motion } from 'framer-motion';
+import Image from './UI/Image.jsx';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 
@@ -88,7 +89,7 @@ const ShowDetails = ({ timeFormatter }) => {
       <div className={classes.imageContainer}>
         {/* //? Backdrop */}
         <div className={classes.backdrop}>
-          <img
+          {/* <img
             src={
               singleShow?.backdrop_path
                 ? `${IMG_PATH}/${singleShow?.backdrop_path}`
@@ -96,12 +97,20 @@ const ShowDetails = ({ timeFormatter }) => {
             }
             alt={singleShow?.name}
             loading="lazy"
+          /> */}
+          <Image
+            src={
+              singleShow?.backdrop_path
+                ? `${IMG_PATH}/${singleShow?.backdrop_path}`
+                : demoBackdrop
+            }
+            alt={singleShow?.name}
           />
         </div>
 
         {/* //? Poster */}
         <div className={classes?.posterContainer}>
-          <img
+          {/* <img
             src={
               singleShow?.poster_path
                 ? `${IMG_PATH}/${singleShow?.poster_path}`
@@ -109,6 +118,14 @@ const ShowDetails = ({ timeFormatter }) => {
             }
             alt={singleShow?.original_name}
             loading="lazy"
+          /> */}
+          <Image
+            src={
+              singleShow?.poster_path
+                ? `${IMG_PATH}/${singleShow?.poster_path}`
+                : demoPoster
+            }
+            alt={singleShow?.original_name}
           />
         </div>
 

@@ -6,6 +6,7 @@ import demoPoster from '../assets/demoPoster.jpg';
 import { useEffect } from 'react';
 import Loader from './Loader';
 import { motion } from 'framer-motion';
+import Image from './UI/Image.jsx';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/original';
 
@@ -28,7 +29,7 @@ const ShowPoster = ({
   }, [shows?.results]);
 
   const showsToUse = (
-    home ? shows?.results?.slice(0, 5) : shows?.results
+    home ? shows?.results?.slice(0, 6) : shows?.results
   ).filter(show => show?.backdrop_path !== null || show?.poster_path !== null);
 
   if (isLoading) return <Loader />;
@@ -58,7 +59,7 @@ const ShowPoster = ({
       <div className={classes.posterContainer}>
         {showsToUse?.map((show, idx) => (
           <div key={idx} className={classes.poster}>
-            <img
+            {/* <img
               src={
                 show?.poster_path
                   ? `${IMG_PATH}/${show?.poster_path}`
@@ -66,6 +67,14 @@ const ShowPoster = ({
               }
               alt={show?.name}
               loading="lazy"
+            /> */}
+            <Image
+              src={
+                show?.poster_path
+                  ? `${IMG_PATH}/${show?.poster_path}`
+                  : demoPoster
+              }
+              alt={show?.name}
             />
             <h4>{show?.name}</h4>
             <p>
@@ -86,7 +95,7 @@ const ShowPoster = ({
         ))}
         {home && !similar && (
           <div className={`${classes.poster} ${classes.more}`}>
-            <Link to={path}>More..</Link>
+            <Link to={path}>Show more</Link>
           </div>
         )}
       </div>

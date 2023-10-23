@@ -8,6 +8,7 @@ import Loader from './Loader';
 import ShowMiniPosters from './ShowMiniPosters';
 import { MenuItem, TextField } from '@mui/material';
 import { motion } from 'framer-motion';
+import Image from './UI/Image.jsx';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 
@@ -85,7 +86,7 @@ const SeasonDetails = ({ timeFormatter }) => {
       ) : (
         <div className={classes.singlePoster}>
           <div className={classes.imageContainer}>
-            <img
+            {/* <img
               src={
                 singleShow?.poster_path
                   ? `${IMG_PATH}/${singleShow?.poster_path}`
@@ -93,6 +94,14 @@ const SeasonDetails = ({ timeFormatter }) => {
               }
               alt={singleShow?.name}
               loading="lazy"
+            /> */}
+            <Image
+              src={
+                singleShow?.poster_path
+                  ? `${IMG_PATH}/${singleShow?.poster_path}`
+                  : demoPoster
+              }
+              alt={singleShow?.name}
             />
           </div>
           <div className={classes.details}>
@@ -124,7 +133,7 @@ const SeasonDetails = ({ timeFormatter }) => {
           {seasonDetails?.episodes.map(episode => (
             <div key={episode?.id} className={classes.episode}>
               <div className={classes.still}>
-                <img
+                {/* <img
                   src={
                     episode?.still_path
                       ? `${IMG_PATH}/${episode?.still_path}`
@@ -132,6 +141,14 @@ const SeasonDetails = ({ timeFormatter }) => {
                   }
                   alt={episode?.name}
                   loading="lazy"
+                /> */}
+                <Image
+                  src={
+                    episode?.still_path
+                      ? `${IMG_PATH}/${episode?.still_path}`
+                      : demoBackdrop
+                  }
+                  alt={episode?.name}
                 />
                 <div className={classes.count}>
                   S{episode?.season_number}, Ep{episode?.episode_number}&nbsp; •

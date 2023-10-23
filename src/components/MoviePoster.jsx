@@ -7,6 +7,7 @@ import demoPoster from '../assets/demoPoster.jpg';
 import { useEffect } from 'react';
 import Loader from './Loader';
 import { motion } from 'framer-motion';
+import Image from './UI/Image.jsx';
 
 const MoviePoster = ({
   home,
@@ -28,7 +29,7 @@ const MoviePoster = ({
   }, [movies?.results]);
 
   const moviesToUse = (
-    home ? movies?.results?.slice(0, 5) : movies?.results
+    home ? movies?.results?.slice(0, 6) : movies?.results
   ).filter(
     movie => movie?.backdrop_path !== null || movie?.poster_path !== null
   );
@@ -60,7 +61,7 @@ const MoviePoster = ({
       <div className={classes.posterContainer}>
         {moviesToUse?.map((movie, idx) => (
           <div key={idx} className={classes.poster}>
-            <img
+            {/* <img
               src={
                 movie?.poster_path
                   ? `${IMG_PATH}/${movie?.poster_path}`
@@ -68,7 +69,15 @@ const MoviePoster = ({
               }
               alt={movie?.title}
               loading="lazy"
-            ></img>
+            /> */}
+            <Image
+              src={
+                movie?.poster_path
+                  ? `${IMG_PATH}/${movie?.poster_path}`
+                  : demoPoster
+              }
+              alt={movie?.title}
+            />
             <h4>{movie?.title}</h4>
             <p>
               {movie?.release_date
@@ -86,7 +95,7 @@ const MoviePoster = ({
         ))}
         {home && !similar && (
           <div className={`${classes.poster} ${classes.more}`}>
-            <Link to={path}>More..</Link>
+            <Link to={path}>Show more</Link>
           </div>
         )}
       </div>
