@@ -16,7 +16,7 @@ const Home = () => {
   const { data: topRated, isFetching: fetchingTopRated } =
     useGetTopRatedMoviesQuery(1);
   const { data: upcoming, isFetching: fetchingUpcoming } =
-    useGetUpcomingMoviesQuery();
+    useGetUpcomingMoviesQuery(1);
   const { data: popular, isFetching: fetchingPopular } =
     useGetPopularMoviesQuery(1);
   const { data: topRatedTv, isFetching: fetchingTopRatedTv } =
